@@ -1,0 +1,19 @@
+{
+    "[dart]": {
+        "editor.inlayHints.enabled": "on",
+        "editor.rulers": [
+            80,
+            120
+        ]
+    },
+    "dart.lineLength": 80,
+    "dart.onlyAnalyzeProjectsWithOpenFiles": true,
+    "dart.previewFlutterUiGuides": true,
+    "dart.analysisExcludedFolders": [
+        "flutter_mobile/plugin/**",
+        "flutter_desktop/plugins/**"
+    ],
+    "editor.formatOnSave": false,
+    "IDX.aI.enableInlineCompletion": true,
+    "IDX.aI.enableCodebaseIndexing": true
+}

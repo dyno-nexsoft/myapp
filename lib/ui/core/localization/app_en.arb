@@ -1,0 +1,19 @@
+{
+  "helloWorld": "Hello World!",
+  "@helloWorld": {
+    "description": "The conventional newborn programmer greeting"
+  },
+  "errorWhileLogin": "Error while trying to login",
+  "errorWhileLogout": "Error while trying to logout",
+  "errorWhileLoadingHome": "Error while loading home",
+  "tryAgain": "Try again",
+  "confirm": "Confirm",
+  "textSelected": "{text} selected",
+  "search": "Search",
+  "login": "Login",
+  "welcome": "Welcome",
+  "email": "Email",
+  "password": "Password",
+  "logout": "Logout",
+  "home": "Home"
+}
