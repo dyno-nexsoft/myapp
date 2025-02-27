@@ -15,5 +15,6 @@
   "email": "Email",
   "password": "Password",
   "logout": "Logout",
+  "profile": "Profile",
   "home": "Home"
 }

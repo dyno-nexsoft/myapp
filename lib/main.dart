@@ -5,7 +5,6 @@ import 'main_development.dart' as development;
 import 'routing/router.dart';
 import 'ui/core/localization/app_localizations.dart';
 import 'ui/core/themes/theme.dart';
-import 'ui/core/ui/scroll_behavior.dart';
 
 /// Default main method
 void main() {
@@ -21,7 +20,6 @@ class MainApp extends StatelessWidget {
     return MaterialApp.router(
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      scrollBehavior: AppCustomScrollBehavior(),
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       routerConfig: router(context.read()),
