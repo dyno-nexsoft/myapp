@@ -42,8 +42,8 @@ class $AssetsJsonsGen {
   List<String> get values => [example];
 }
 
-class Assets {
-  const Assets._();
+class AppAssets {
+  const AppAssets._();
 
   static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();

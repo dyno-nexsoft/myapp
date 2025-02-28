@@ -22,11 +22,11 @@ class DashboardScreen extends StatelessWidget {
         onTap: navigationShell.goBranch,
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: const Icon(Icons.home),
             label: AppLocalizations.of(context).home,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.menu),
+            icon: const Icon(Icons.menu),
             label: AppLocalizations.of(context).profile,
           ),
         ],

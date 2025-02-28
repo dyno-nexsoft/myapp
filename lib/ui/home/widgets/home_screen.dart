@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-import '../../auth/logout/view_models/logout_viewmodel.dart';
-import '../../auth/logout/widgets/logout_button.dart';
-import '../../core/themes/dimens.dart';
 import '../view_models/home_viewmodel.dart';
+import 'home_app_bar.dart';
 
 const String bookingButtonKey = 'booking-button';
 
@@ -21,18 +18,14 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Home',
-          style: TextStyle(color: Theme.of(context).colorScheme.onSurface),
-        ),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        actions: [
-          LogoutButton(
-            viewModel: LogoutViewModel(authRepository: context.read()),
+      body: CustomScrollView(
+        slivers: [
+          const HomeAppBar(),
+          SliverList.builder(
+            itemBuilder: (context, index) {
+              return ListTile(title: Text('Item $index'));
+            },
           ),
-          Dimens.of(context).gapHorizontal,
         ],
       ),
     );

@@ -45,11 +45,17 @@ flutter:
     - assets/jsons/
 
 flutter_gen:
-  output: lib/ui/core/themes
+  output: lib/config
   integrations:
     image: true
     flutter_svg: true
+  assets:
+    enabled: true
+    outputs:
+      class_name: AppAssets
   colors:
     enabled: true
+    outputs:
+      class_name: AppColors
     inputs:
       - assets/colors.xml

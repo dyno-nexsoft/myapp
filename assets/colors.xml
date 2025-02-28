@@ -2,6 +2,6 @@
 <resources>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
-    <color name="gray_70">#EEEEEE</color>
-    <color name="gray_410">#979797</color>
+    <color name="gray_EE">#EEEEEE</color>
+    <color name="gray_97">#979797</color>
 </resources>
