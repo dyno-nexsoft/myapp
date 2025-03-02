@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
+import '../../../../config/colors.gen.dart';
 import '../../../core/localization/app_localizations.dart';
-import '../../../core/themes/colors.dart';
 import '../view_models/logout_viewmodel.dart';
 
 class LogoutButton extends StatefulWidget {
-  const LogoutButton({super.key, required this.viewModel});
+  const LogoutButton({super.key, required this.viewModel, this.color});
 
+  final Color? color;
   final LogoutViewModel viewModel;
 
   @override
@@ -40,7 +41,7 @@ class _LogoutButtonState extends State<LogoutButton> {
       width: 40.0,
       child: DecoratedBox(
         decoration: BoxDecoration(
-          border: Border.all(color: AppColors.grey1),
+          border: Border.all(color: AppColors.greyEE),
           borderRadius: BorderRadius.circular(8.0),
           color: Colors.transparent,
         ),
@@ -53,7 +54,7 @@ class _LogoutButtonState extends State<LogoutButton> {
             child: Icon(
               size: 24.0,
               Icons.logout,
-              color: Theme.of(context).colorScheme.onSurface,
+              color: widget.color ?? Theme.of(context).colorScheme.onSurface,
             ),
           ),
         ),

@@ -4,14 +4,21 @@ part 'user.freezed.dart';
 part 'user.g.dart';
 
 @freezed
-abstract class User with _$User {
-  const factory User({
-    /// The user's name.
-    required String name,
+@JsonSerializable()
+class User with _$User {
+  const User({required this.name, required this.picture});
 
-    /// The user's picture URL.
-    required String picture,
-  }) = _User;
+  /// The user's name.
+  @override
+  final String name;
 
-  factory User.fromJson(Map<String, Object?> json) => _$UserFromJson(json);
+  /// The user's picture URL.
+  @override
+  final String picture;
+
+  /// Factory constructor for creating a User from a JSON map.
+  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
+
+  /// Converts the User object to a JSON map.
+  Map<String, dynamic> toJson() => _$UserToJson(this);
 }

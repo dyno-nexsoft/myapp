@@ -1,5 +1,6 @@
 include: package:flutter_lints/flutter.yaml
 
+# https://github.com/flutter/samples/blob/main/compass_app/app/analysis_options.yaml
 linter:
   rules:
     - combinators_ordering
@@ -9,5 +10,10 @@ linter:
     - prefer_final_in_for_each
     - prefer_final_locals
     - prefer_relative_imports
+    # Custom
     - avoid_relative_lib_imports
     - avoid_redundant_argument_values
+    - prefer_const_constructors
+    - prefer_const_constructors_in_immutables
+    - prefer_const_declarations
+    - prefer_const_literals_to_create_immutables

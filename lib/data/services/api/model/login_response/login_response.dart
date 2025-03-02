@@ -6,7 +6,7 @@ part 'login_response.g.dart';
 
 /// LoginResponse model.
 @freezed
-class LoginResponse with _$LoginResponse {
+abstract class LoginResponse with _$LoginResponse {
   const factory LoginResponse({
     /// The token to be used for authentication.
     required String token,

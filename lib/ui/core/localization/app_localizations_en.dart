@@ -50,5 +50,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get logout => 'Logout';
 
   @override
+  String get profile => 'Profile';
+
+  @override
   String get home => 'Home';
 }

@@ -1,50 +1,54 @@
 import 'package:flutter/material.dart';
 
-import 'colors.dart';
+import '../../../config/colors.gen.dart';
 
 abstract final class AppTheme {
-  static const _textTheme = TextTheme(
-    headlineLarge: TextStyle(fontSize: 32, fontWeight: FontWeight.w500),
-    headlineSmall: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
-    titleMedium: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-    bodyLarge: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
-    bodyMedium: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
-    bodySmall: TextStyle(
-      fontSize: 14,
-      fontWeight: FontWeight.w400,
-      color: AppColors.grey3,
-    ),
-    labelSmall: TextStyle(
-      fontSize: 10,
-      fontWeight: FontWeight.w500,
-      color: AppColors.grey3,
-    ),
-    labelLarge: TextStyle(
-      fontSize: 18,
-      fontWeight: FontWeight.w400,
-      color: AppColors.grey3,
-    ),
-  );
+  static const _textTheme = TextTheme();
 
-  static const _inputDecorationTheme = InputDecorationTheme(
-    hintStyle: TextStyle(
-      // grey3 works for both light and dark themes
-      color: AppColors.grey3,
-      fontSize: 18.0,
-      fontWeight: FontWeight.w400,
-    ),
-  );
+  static const _inputDecorationTheme = InputDecorationTheme();
 
   static ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
-    colorScheme: AppColors.lightColorScheme,
+    colorScheme: const ColorScheme(
+      brightness: Brightness.light,
+      primary: AppColors.black,
+      onPrimary: AppColors.white,
+      secondary: Color.fromRGBO(0, 0, 0, 0.5),
+      onSecondary: AppColors.white,
+      surface: AppColors.white,
+      onSurface: AppColors.black,
+      error: AppColors.red,
+      onError: AppColors.black,
+    ),
+    dividerTheme: const DividerThemeData(color: AppColors.grey97),
+    shadowColor: AppColors.black,
+    badgeTheme: const BadgeThemeData(
+      backgroundColor: AppColors.red,
+      textColor: AppColors.black,
+    ),
     textTheme: _textTheme,
     inputDecorationTheme: _inputDecorationTheme,
   );
 
   static ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
-    colorScheme: AppColors.darkColorScheme,
+    colorScheme: const ColorScheme(
+      brightness: Brightness.dark,
+      primary: AppColors.white,
+      onPrimary: AppColors.black,
+      secondary: Color.fromRGBO(255, 255, 255, 0.9),
+      onSecondary: AppColors.black,
+      surface: AppColors.black,
+      onSurface: AppColors.white,
+      error: AppColors.red,
+      onError: AppColors.white,
+    ),
+    dividerTheme: const DividerThemeData(color: AppColors.greyEE),
+    shadowColor: AppColors.white,
+    badgeTheme: const BadgeThemeData(
+      backgroundColor: AppColors.red,
+      textColor: AppColors.white,
+    ),
     textTheme: _textTheme,
     inputDecorationTheme: _inputDecorationTheme,
   );

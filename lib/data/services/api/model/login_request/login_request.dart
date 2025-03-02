@@ -6,7 +6,7 @@ part 'login_request.g.dart';
 
 /// Simple data class to hold login request data.
 @freezed
-class LoginRequest with _$LoginRequest {
+abstract class LoginRequest with _$LoginRequest {
   const factory LoginRequest({
     /// Email address.
     required String email,

@@ -3,19 +3,12 @@ import 'package:flutter/material.dart';
 abstract final class Dimens {
   const Dimens();
 
-  /// General horizontal padding used to separate UI items
-  double get paddingHorizontal => 20.0;
+  double get paddingDefault => 16.0;
 
-  /// General vertical padding used to separate UI items
-  double get paddingVertical => 24.0;
-
-  /// Horizontal padding for screen edges
   double get paddingScreenHorizontal;
 
-  /// Vertical padding for screen edges
   double get paddingScreenVertical;
 
-  /// Profile picture size
   double get profilePictureSize;
 
   static const Dimens desktop = _DimensDesktop();
@@ -39,7 +32,7 @@ final class _DimensMobile extends Dimens {
   final double paddingScreenVertical = 24.0;
 
   @override
-  final double profilePictureSize = 64.0;
+  final double profilePictureSize = 84.0;
 
   const _DimensMobile();
 }
@@ -59,21 +52,31 @@ final class _DimensDesktop extends Dimens {
 }
 
 extension DimensExt on Dimens {
-  /// Horizontal symmetric padding for screen edges
-  EdgeInsets get edgeInsetsScreenHorizontal =>
-      EdgeInsets.symmetric(horizontal: paddingScreenHorizontal);
+  EdgeInsets get edgeInsetsHorizontal =>
+      EdgeInsets.symmetric(horizontal: paddingDefault);
 
-  /// Vertical symmetric padding for screen edges
-  EdgeInsets get edgeInsetsScreenVertical =>
-      EdgeInsets.symmetric(vertical: paddingScreenVertical);
+  EdgeInsets get edgeInsetsVertical =>
+      EdgeInsets.symmetric(vertical: paddingDefault);
 
-  /// Symmetric padding for screen edges
-  EdgeInsets get edgeInsetsScreenSymmetric => EdgeInsets.symmetric(
-    horizontal: paddingScreenHorizontal,
-    vertical: paddingScreenVertical,
-  );
+  EdgeInsets get edgeInsetsAll => EdgeInsets.all(paddingDefault);
 
-  SizedBox get gapHorizontal => SizedBox(width: paddingHorizontal);
+  SizedBox get gapHorizontal => SizedBox(width: paddingDefault);
 
-  SizedBox get gapVertical => SizedBox(height: paddingVertical);
+  SizedBox get gapVertical => SizedBox(height: paddingDefault);
+
+  BorderRadiusGeometry get borderRadiusStart =>
+      BorderRadiusDirectional.horizontal(
+        start: Radius.circular(paddingDefault),
+      );
+
+  BorderRadiusGeometry get borderRadiusEnd =>
+      BorderRadiusDirectional.horizontal(end: Radius.circular(paddingDefault));
+
+  BorderRadiusGeometry get borderRadiusTop =>
+      BorderRadiusDirectional.vertical(top: Radius.circular(paddingDefault));
+
+  BorderRadiusGeometry get borderRadiusBottom =>
+      BorderRadius.vertical(bottom: Radius.circular(paddingDefault));
+
+  BorderRadius get borderRadiusAll => BorderRadius.circular(paddingDefault);
 }

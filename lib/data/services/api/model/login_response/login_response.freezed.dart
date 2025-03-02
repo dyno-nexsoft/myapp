@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,189 +10,146 @@ part of 'login_response.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
-
-LoginResponse _$LoginResponseFromJson(Map<String, dynamic> json) {
-  return _LoginResponse.fromJson(json);
-}
 
 /// @nodoc
 mixin _$LoginResponse {
-  /// The token to be used for authentication.
-  String get token => throw _privateConstructorUsedError;
 
-  /// The user id.
-  String get userId => throw _privateConstructorUsedError;
+/// The token to be used for authentication.
+ String get token;/// The user id.
+ String get userId;
+/// Create a copy of LoginResponse
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$LoginResponseCopyWith<LoginResponse> get copyWith => _$LoginResponseCopyWithImpl<LoginResponse>(this as LoginResponse, _$identity);
 
   /// Serializes this LoginResponse to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of LoginResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $LoginResponseCopyWith<LoginResponse> get copyWith =>
-      throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LoginResponse&&(identical(other.token, token) || other.token == token)&&(identical(other.userId, userId) || other.userId == userId));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,token,userId);
+
+@override
+String toString() {
+  return 'LoginResponse(token: $token, userId: $userId)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $LoginResponseCopyWith<$Res> {
-  factory $LoginResponseCopyWith(
-    LoginResponse value,
-    $Res Function(LoginResponse) then,
-  ) = _$LoginResponseCopyWithImpl<$Res, LoginResponse>;
-  @useResult
-  $Res call({String token, String userId});
-}
+abstract mixin class $LoginResponseCopyWith<$Res>  {
+  factory $LoginResponseCopyWith(LoginResponse value, $Res Function(LoginResponse) _then) = _$LoginResponseCopyWithImpl;
+@useResult
+$Res call({
+ String token, String userId
+});
 
+
+
+
+}
 /// @nodoc
-class _$LoginResponseCopyWithImpl<$Res, $Val extends LoginResponse>
+class _$LoginResponseCopyWithImpl<$Res>
     implements $LoginResponseCopyWith<$Res> {
-  _$LoginResponseCopyWithImpl(this._value, this._then);
+  _$LoginResponseCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final LoginResponse _self;
+  final $Res Function(LoginResponse) _then;
 
-  /// Create a copy of LoginResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? token = null, Object? userId = null}) {
-    return _then(
-      _value.copyWith(
-            token:
-                null == token
-                    ? _value.token
-                    : token // ignore: cast_nullable_to_non_nullable
-                        as String,
-            userId:
-                null == userId
-                    ? _value.userId
-                    : userId // ignore: cast_nullable_to_non_nullable
-                        as String,
-          )
-          as $Val,
-    );
-  }
+/// Create a copy of LoginResponse
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? token = null,Object? userId = null,}) {
+  return _then(_self.copyWith(
+token: null == token ? _self.token : token // ignore: cast_nullable_to_non_nullable
+as String,userId: null == userId ? _self.userId : userId // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
 }
 
-/// @nodoc
-abstract class _$$LoginResponseImplCopyWith<$Res>
-    implements $LoginResponseCopyWith<$Res> {
-  factory _$$LoginResponseImplCopyWith(
-    _$LoginResponseImpl value,
-    $Res Function(_$LoginResponseImpl) then,
-  ) = __$$LoginResponseImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String token, String userId});
 }
 
-/// @nodoc
-class __$$LoginResponseImplCopyWithImpl<$Res>
-    extends _$LoginResponseCopyWithImpl<$Res, _$LoginResponseImpl>
-    implements _$$LoginResponseImplCopyWith<$Res> {
-  __$$LoginResponseImplCopyWithImpl(
-    _$LoginResponseImpl _value,
-    $Res Function(_$LoginResponseImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of LoginResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? token = null, Object? userId = null}) {
-    return _then(
-      _$LoginResponseImpl(
-        token:
-            null == token
-                ? _value.token
-                : token // ignore: cast_nullable_to_non_nullable
-                    as String,
-        userId:
-            null == userId
-                ? _value.userId
-                : userId // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
-  }
-}
 
 /// @nodoc
 @JsonSerializable()
-class _$LoginResponseImpl implements _LoginResponse {
-  const _$LoginResponseImpl({required this.token, required this.userId});
 
-  factory _$LoginResponseImpl.fromJson(Map<String, dynamic> json) =>
-      _$$LoginResponseImplFromJson(json);
+class _LoginResponse implements LoginResponse {
+  const _LoginResponse({required this.token, required this.userId});
+  factory _LoginResponse.fromJson(Map<String, dynamic> json) => _$LoginResponseFromJson(json);
 
-  /// The token to be used for authentication.
-  @override
-  final String token;
+/// The token to be used for authentication.
+@override final  String token;
+/// The user id.
+@override final  String userId;
 
-  /// The user id.
-  @override
-  final String userId;
+/// Create a copy of LoginResponse
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$LoginResponseCopyWith<_LoginResponse> get copyWith => __$LoginResponseCopyWithImpl<_LoginResponse>(this, _$identity);
 
-  @override
-  String toString() {
-    return 'LoginResponse(token: $token, userId: $userId)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$LoginResponseImpl &&
-            (identical(other.token, token) || other.token == token) &&
-            (identical(other.userId, userId) || other.userId == userId));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, token, userId);
-
-  /// Create a copy of LoginResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$LoginResponseImplCopyWith<_$LoginResponseImpl> get copyWith =>
-      __$$LoginResponseImplCopyWithImpl<_$LoginResponseImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$LoginResponseImplToJson(this);
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$LoginResponseToJson(this, );
 }
 
-abstract class _LoginResponse implements LoginResponse {
-  const factory _LoginResponse({
-    required final String token,
-    required final String userId,
-  }) = _$LoginResponseImpl;
-
-  factory _LoginResponse.fromJson(Map<String, dynamic> json) =
-      _$LoginResponseImpl.fromJson;
-
-  /// The token to be used for authentication.
-  @override
-  String get token;
-
-  /// The user id.
-  @override
-  String get userId;
-
-  /// Create a copy of LoginResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$LoginResponseImplCopyWith<_$LoginResponseImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _LoginResponse&&(identical(other.token, token) || other.token == token)&&(identical(other.userId, userId) || other.userId == userId));
 }
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,token,userId);
+
+@override
+String toString() {
+  return 'LoginResponse(token: $token, userId: $userId)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$LoginResponseCopyWith<$Res> implements $LoginResponseCopyWith<$Res> {
+  factory _$LoginResponseCopyWith(_LoginResponse value, $Res Function(_LoginResponse) _then) = __$LoginResponseCopyWithImpl;
+@override @useResult
+$Res call({
+ String token, String userId
+});
+
+
+
+
+}
+/// @nodoc
+class __$LoginResponseCopyWithImpl<$Res>
+    implements _$LoginResponseCopyWith<$Res> {
+  __$LoginResponseCopyWithImpl(this._self, this._then);
+
+  final _LoginResponse _self;
+  final $Res Function(_LoginResponse) _then;
+
+/// Create a copy of LoginResponse
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? token = null,Object? userId = null,}) {
+  return _then(_LoginResponse(
+token: null == token ? _self.token : token // ignore: cast_nullable_to_non_nullable
+as String,userId: null == userId ? _self.userId : userId // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+// dart format on

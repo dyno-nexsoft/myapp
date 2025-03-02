@@ -15,7 +15,7 @@ class LogoutViewModel {
     switch (result) {
       case Ok<void>():
         // clear stored itinerary config
-        return Result.ok(null);
+        return const Result.ok(null);
       case Error<void>():
         return result;
     }
