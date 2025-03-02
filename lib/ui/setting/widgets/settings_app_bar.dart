@@ -8,8 +8,8 @@ import '../../auth/logout/widgets/logout_button.dart';
 import '../../core/localization/app_localizations.dart';
 import '../../core/themes/dimens.dart';
 
-class ProfileAppBar extends StatelessWidget {
-  const ProfileAppBar({
+class SettingsAppBar extends StatelessWidget {
+  const SettingsAppBar({
     super.key,
     this.expandedHeight = 200,
     this.collapsedHeight = 64,

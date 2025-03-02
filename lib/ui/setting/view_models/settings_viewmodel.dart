@@ -6,8 +6,8 @@ import '../../../domain/models/user/user.dart';
 import '../../../utils/command.dart';
 import '../../../utils/result.dart';
 
-class ProfileViewModel extends ChangeNotifier {
-  ProfileViewModel({required UserRepository userRepository})
+class SettingsViewModel extends ChangeNotifier {
+  SettingsViewModel({required UserRepository userRepository})
     : _userRepository = userRepository {
     load = Command0(_load)..execute();
   }

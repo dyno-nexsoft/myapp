@@ -13,8 +13,6 @@ GoRouter? _router;
 /// to /login when the user logs out.
 GoRouter router(AuthRepository authRepository) =>
     _router ??= GoRouter(
-      initialLocation: const HomeRoute().location,
-      debugLogDiagnostics: true,
       redirect: _redirect,
       refreshListenable: authRepository,
       routes: $appRoutes,

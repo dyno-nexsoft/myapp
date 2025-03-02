@@ -5,24 +5,24 @@ import '../../core/themes/dimens.dart';
 import '../../core/view_models/app_viewmodel.dart';
 import '../../core/widgets/adaptive_action_sheet.dart';
 import '../../core/widgets/adaptive_switch.dart';
-import '../view_models/profile_viewmodel.dart';
-import 'profile_app_bar.dart';
+import '../view_models/settings_viewmodel.dart';
+import 'settings_app_bar.dart';
 
-class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({
+class SettingsScreen extends StatelessWidget {
+  const SettingsScreen({
     super.key,
     required this.viewModel,
     required this.appViewModel,
   });
 
-  final ProfileViewModel viewModel;
+  final SettingsViewModel viewModel;
   final AppViewModel appViewModel;
 
   @override
   Widget build(BuildContext context) {
     return NestedScrollView(
       headerSliverBuilder: (context, innerBoxIsScrolled) {
-        return const [ProfileAppBar()];
+        return const [SettingsAppBar()];
       },
       body: ListView(
         clipBehavior: Clip.none,

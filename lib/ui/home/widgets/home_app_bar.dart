@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:provider/provider.dart';
 
 import '../../../config/assets.gen.dart';
-import '../../auth/logout/view_models/logout_viewmodel.dart';
-import '../../auth/logout/widgets/logout_button.dart';
 import '../../core/themes/dimens.dart';
 
 class HomeAppBar extends StatelessWidget {
