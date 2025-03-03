@@ -22,14 +22,18 @@ GoRouter router(AuthRepository authRepository) =>
 Future<String?> _redirect(BuildContext context, GoRouterState state) async {
   // if the user is not logged in, they need to login
   final loggedIn = await context.read<AuthRepository>().isAuthenticated;
-  final loggingIn = state.matchedLocation == const LoginRoute().location;
-  if (!loggedIn) {
+  final loggingIn = <String>[
+    const WelcomeRoute().location,
+    const LoginRoute().location,
+    const SignUpRoute().location,
+  ].contains(state.matchedLocation);
+  if (!loggedIn && !loggingIn) {
     return const LoginRoute().location;
   }
 
   // if the user is logged in but still on the login page, send them to
   // the home page
-  if (loggingIn) {
+  if (loggedIn && loggingIn) {
     return const HomeRoute().location;
   }
 

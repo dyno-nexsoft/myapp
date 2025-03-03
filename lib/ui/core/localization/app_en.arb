@@ -10,11 +10,16 @@
   "confirm": "Confirm",
   "textSelected": "{text} selected",
   "search": "Search",
-  "login": "Login",
   "welcome": "Welcome",
   "email": "Email",
   "password": "Password",
   "logout": "Logout",
   "profile": "Profile",
-  "home": "Home"
+  "home": "Home",
+  "letsGetStarted": "Let's Get Started!",
+  "accountDetails": "Let's dive in into your account",
+  "signUp": "Sign up",
+  "login": "Log in",
+  "privacyPolicy": "Privacy Policy",
+  "termsOfService": "Terms of Service"
 }

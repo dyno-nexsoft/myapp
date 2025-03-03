@@ -41,7 +41,7 @@ class _LogoutButtonState extends State<LogoutButton> {
       width: 40.0,
       child: DecoratedBox(
         decoration: BoxDecoration(
-          border: Border.all(color: AppColors.greyEE),
+          border: Border.all(color: AppColors.grey),
           borderRadius: BorderRadius.circular(8.0),
           color: Colors.transparent,
         ),

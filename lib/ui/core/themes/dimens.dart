@@ -52,17 +52,17 @@ final class _DimensDesktop extends Dimens {
 }
 
 extension DimensExt on Dimens {
-  EdgeInsets get edgeInsetsHorizontal =>
+  EdgeInsetsGeometry get edgeInsetsHorizontal =>
       EdgeInsets.symmetric(horizontal: paddingDefault);
 
-  EdgeInsets get edgeInsetsVertical =>
+  EdgeInsetsGeometry get edgeInsetsVertical =>
       EdgeInsets.symmetric(vertical: paddingDefault);
 
-  EdgeInsets get edgeInsetsAll => EdgeInsets.all(paddingDefault);
+  EdgeInsetsGeometry get edgeInsetsAll => EdgeInsets.all(paddingDefault);
 
-  SizedBox get gapHorizontal => SizedBox(width: paddingDefault);
+  Widget get gapHorizontal => SizedBox(width: paddingDefault);
 
-  SizedBox get gapVertical => SizedBox(height: paddingDefault);
+  Widget get gapVertical => SizedBox(height: paddingDefault);
 
   BorderRadiusGeometry get borderRadiusStart =>
       BorderRadiusDirectional.horizontal(
@@ -79,4 +79,9 @@ extension DimensExt on Dimens {
       BorderRadius.vertical(bottom: Radius.circular(paddingDefault));
 
   BorderRadius get borderRadiusAll => BorderRadius.circular(paddingDefault);
+
+  EdgeInsetsGeometry get edgeInsetsScreen => EdgeInsets.symmetric(
+    horizontal: paddingScreenHorizontal,
+    vertical: paddingScreenVertical,
+  );
 }

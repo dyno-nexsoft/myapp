@@ -4,14 +4,14 @@ import 'package:provider/provider.dart';
 
 import '../ui/auth/login/view_models/login_viewmodel.dart';
 import '../ui/auth/login/widgets/login_screen.dart';
+import '../ui/auth/welcome/view_models/welcome_viewmodel.dart';
+import '../ui/auth/welcome/widgets/welcome_screen.dart';
 import '../ui/dashboard/view_models/dashboard_viewmodel.dart';
 import '../ui/dashboard/widgets/dashboard_screen.dart';
 import '../ui/home/view_models/home_viewmodel.dart';
 import '../ui/home/widgets/home_screen.dart';
 import '../ui/setting/view_models/settings_viewmodel.dart';
 import '../ui/setting/widgets/settings_screen.dart';
-import '../ui/welcome/view_models/welcome_viewmodel.dart';
-import '../ui/welcome/widgets/welcome_screen.dart';
 
 part 'routes.g.dart';
 

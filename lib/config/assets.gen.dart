@@ -12,11 +12,35 @@ import 'package:flutter/widgets.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/apple.png
+  AssetGenImage get apple => const AssetGenImage('assets/images/apple.png');
+
+  /// File path: assets/images/facebook.png
+  AssetGenImage get facebook =>
+      const AssetGenImage('assets/images/facebook.png');
+
+  /// File path: assets/images/google.png
+  AssetGenImage get google => const AssetGenImage('assets/images/google.png');
+
+  /// File path: assets/images/logo-remove-bg.png
+  AssetGenImage get logoRemoveBg =>
+      const AssetGenImage('assets/images/logo-remove-bg.png');
+
+  /// File path: assets/images/logo.png
+  AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
+
   /// File path: assets/images/user.jpg
   AssetGenImage get user => const AssetGenImage('assets/images/user.jpg');
 
   /// List of all assets
-  List<AssetGenImage> get values => [user];
+  List<AssetGenImage> get values => [
+    apple,
+    facebook,
+    google,
+    logoRemoveBg,
+    logo,
+    user,
+  ];
 }
 
 class $AssetsJsonsGen {

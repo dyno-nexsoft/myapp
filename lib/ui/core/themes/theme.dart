@@ -7,30 +7,34 @@ abstract final class AppTheme {
 
   static const _inputDecorationTheme = InputDecorationTheme();
 
-  static ThemeData lightTheme = ThemeData(
+  static final lightTheme = ThemeData(
     brightness: Brightness.light,
     colorScheme: const ColorScheme(
       brightness: Brightness.light,
       primary: AppColors.black,
       onPrimary: AppColors.white,
-      secondary: Color.fromRGBO(0, 0, 0, 0.5),
+      secondary: AppColors.grey,
       onSecondary: AppColors.white,
       surface: AppColors.white,
       onSurface: AppColors.black,
       error: AppColors.red,
       onError: AppColors.black,
     ),
-    dividerTheme: const DividerThemeData(color: AppColors.grey97),
+    dividerTheme: const DividerThemeData(color: AppColors.grey),
     shadowColor: AppColors.black,
     badgeTheme: const BadgeThemeData(
       backgroundColor: AppColors.red,
       textColor: AppColors.black,
     ),
+    cardTheme: CardTheme(
+      color: AppColors.grey.shade50,
+      shadowColor: AppColors.black,
+    ),
     textTheme: _textTheme,
     inputDecorationTheme: _inputDecorationTheme,
   );
 
-  static ThemeData darkTheme = ThemeData(
+  static final darkTheme = ThemeData(
     brightness: Brightness.dark,
     colorScheme: const ColorScheme(
       brightness: Brightness.dark,
@@ -43,11 +47,16 @@ abstract final class AppTheme {
       error: AppColors.red,
       onError: AppColors.white,
     ),
-    dividerTheme: const DividerThemeData(color: AppColors.greyEE),
+    dividerTheme: DividerThemeData(color: AppColors.grey.shade400),
     shadowColor: AppColors.white,
     badgeTheme: const BadgeThemeData(
       backgroundColor: AppColors.red,
       textColor: AppColors.white,
+    ),
+    cardTheme: CardTheme(
+      color: AppColors.black,
+      surfaceTintColor: AppColors.white,
+      shadowColor: AppColors.grey.shade400,
     ),
     textTheme: _textTheme,
     inputDecorationTheme: _inputDecorationTheme,

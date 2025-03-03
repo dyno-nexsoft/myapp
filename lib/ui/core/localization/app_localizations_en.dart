@@ -35,9 +35,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get search => 'Search';
 
   @override
-  String get login => 'Login';
-
-  @override
   String get welcome => 'Welcome';
 
   @override
@@ -54,4 +51,22 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get home => 'Home';
+
+  @override
+  String get letsGetStarted => 'Let\'s Get Started!';
+
+  @override
+  String get accountDetails => 'Let\'s dive in into your account';
+
+  @override
+  String get signUp => 'Sign up';
+
+  @override
+  String get login => 'Log in';
+
+  @override
+  String get privacyPolicy => 'Privacy Policy';
+
+  @override
+  String get termsOfService => 'Terms of Service';
 }

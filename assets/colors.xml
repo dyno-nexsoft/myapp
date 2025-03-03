@@ -3,6 +3,6 @@
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="red">#FF0000</color>
-    <color name="grey_EE">#EEEEEE</color>
-    <color name="grey_97">#979797</color>
+    <color name="grey" type="material">#808080</color>
+    <color name="brown" type="material">#964B00</color>
 </resources>
