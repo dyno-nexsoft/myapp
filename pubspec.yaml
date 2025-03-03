@@ -30,6 +30,7 @@ dev_dependencies:
   json_serializable: ^6.9.0
   go_router_builder: ^2.8.0
   flutter_gen_runner: ^5.9.0
+  flutter_launcher_icons: ^0.14.3
 
 flutter:
   generate: true
