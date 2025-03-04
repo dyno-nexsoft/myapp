@@ -8,6 +8,12 @@ class AuthRepositoryDev extends AuthRepository {
   @override
   Future<bool> get isAuthenticated => Future.value(_isAuthenticated);
 
+  @override
+  Future<Result<void>> signUp({
+    required String email,
+    required String password,
+  }) => login(email: email, password: password);
+
   /// Login is always successful in dev scenarios
   @override
   Future<Result<void>> login({

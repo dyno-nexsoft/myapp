@@ -21,5 +21,9 @@
   "signUp": "Sign up",
   "login": "Log in",
   "privacyPolicy": "Privacy Policy",
-  "termsOfService": "Terms of Service"
+  "termsOfService": "Terms of Service",
+  "createAccount": "Create Your Account",
+  "elevateHrManagementWithDinosaur": "Elevate Your HR Management with Dinosaur.",
+  "haveAccount": "Already have an acount? ",
+  "or": "Or"
 }

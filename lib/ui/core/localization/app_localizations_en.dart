@@ -69,4 +69,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get termsOfService => 'Terms of Service';
+
+  @override
+  String get createAccount => 'Create Your Account';
+
+  @override
+  String get elevateHrManagementWithDinosaur => 'Elevate Your HR Management with Dinosaur.';
+
+  @override
+  String get haveAccount => 'Already have an acount? ';
+
+  @override
+  String get or => 'Or';
 }

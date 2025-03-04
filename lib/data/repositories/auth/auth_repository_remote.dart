@@ -54,6 +54,12 @@ class AuthRepositoryRemote extends AuthRepository {
   }
 
   @override
+  Future<Result<void>> signUp({
+    required String email,
+    required String password,
+  }) => login(email: email, password: password);
+
+  @override
   Future<Result<void>> login({
     required String email,
     required String password,

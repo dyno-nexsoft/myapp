@@ -212,6 +212,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Terms of Service'**
   String get termsOfService;
+
+  /// No description provided for @createAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Create Your Account'**
+  String get createAccount;
+
+  /// No description provided for @elevateHrManagementWithDinosaur.
+  ///
+  /// In en, this message translates to:
+  /// **'Elevate Your HR Management with Dinosaur.'**
+  String get elevateHrManagementWithDinosaur;
+
+  /// No description provided for @haveAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Already have an acount? '**
+  String get haveAccount;
+
+  /// No description provided for @or.
+  ///
+  /// In en, this message translates to:
+  /// **'Or'**
+  String get or;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
