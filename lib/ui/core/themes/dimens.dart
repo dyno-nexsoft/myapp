@@ -26,10 +26,10 @@ abstract final class Dimens {
 /// Mobile dimensions
 final class _DimensMobile extends Dimens {
   @override
-  final double paddingScreenHorizontal = 20.0;
+  final double paddingScreenHorizontal = 16.0;
 
   @override
-  final double paddingScreenVertical = 24.0;
+  final double paddingScreenVertical = 8.0;
 
   @override
   final double profilePictureSize = 84.0;
@@ -62,7 +62,11 @@ extension DimensExt on Dimens {
 
   Widget get gapHorizontal => SizedBox(width: paddingDefault);
 
+  Widget get gapHorizontalSmall => SizedBox(width: paddingDefault / 2);
+
   Widget get gapVertical => SizedBox(height: paddingDefault);
+
+  Widget get gapVerticalSmall => SizedBox(height: paddingDefault / 2);
 
   BorderRadiusGeometry get borderRadiusStart =>
       BorderRadiusDirectional.horizontal(

@@ -5,10 +5,10 @@ import '../../../../utils/result.dart';
 class LogoutViewModel {
   LogoutViewModel({required AuthRepository authRepository})
     : _authLogoutRepository = authRepository {
-    logout = Command0(_logout);
+    logout = CommandVoid(_logout);
   }
   final AuthRepository _authLogoutRepository;
-  late Command0 logout;
+  late CommandVoid logout;
 
   Future<Result> _logout() async {
     final result = await _authLogoutRepository.logout();

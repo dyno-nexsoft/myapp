@@ -47,18 +47,13 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
 
             const Spacer(),
             FilledButton(
-              style: FilledButton.styleFrom(
-                minimumSize: const Size(double.infinity, 42),
-              ),
               onPressed: () => const SignUpRoute().push(context),
-              child:  Text(AppLocalizations.of(context).signUp),
+              child: Center(child: Text(AppLocalizations.of(context).signUp)),
             ),
+            Dimens.of(context).gapVertical,
             FilledButton.tonal(
-              style: FilledButton.styleFrom(
-                minimumSize: const Size(double.infinity, 42),
-              ),
               onPressed: () => const LoginRoute().push(context),
-              child:  Text(AppLocalizations.of(context).login),
+              child: Center(child: Text(AppLocalizations.of(context).login)),
             ),
 
             const Spacer(),
@@ -67,12 +62,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               children: [
                 TextButton(
                   onPressed: () {},
-                  child:  Text(AppLocalizations.of(context).privacyPolicy),
+                  child: Text(AppLocalizations.of(context).privacyPolicy),
                 ),
                 Dimens.of(context).gapHorizontal,
                 TextButton(
                   onPressed: () {},
-                  child:  Text(AppLocalizations.of(context).termsOfService),
+                  child: Text(AppLocalizations.of(context).termsOfService),
                 ),
               ],
             ),

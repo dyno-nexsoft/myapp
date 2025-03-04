@@ -6,15 +6,15 @@ import '../localization/app_localizations.dart';
 
 class AppViewModel with ChangeNotifier {
   AppViewModel() {
-    changeThemeMode = Command1(_setThemeMode);
-    changeLocale = Command1(_setLocale);
+    changeThemeMode = CommandArgument(_setThemeMode);
+    changeLocale = CommandArgument(_setLocale);
   }
 
   ThemeMode _themeMode = ThemeMode.values.first;
   Locale _locale = AppLocalizations.supportedLocales.first;
 
-  late Command1<void, ThemeMode?> changeThemeMode;
-  late Command1<void, Locale?> changeLocale;
+  late CommandArgument<void, ThemeMode?> changeThemeMode;
+  late CommandArgument<void, Locale?> changeLocale;
 
   ThemeMode get themeMode => _themeMode;
   Locale get locale => _locale;

@@ -27,10 +27,8 @@ class DashboardScreen extends StatelessWidget {
         height: 64,
         notchMargin: 8,
         elevation: 10,
-        shadowColor: Theme.of(context).shadowColor,
         padding: EdgeInsets.zero,
         clipBehavior: Clip.hardEdge,
-        shape: const CircularNotchedRectangle(),
         child: BottomNavigationBar(
           currentIndex: navigationShell.currentIndex,
           onTap: navigationShell.goBranch,

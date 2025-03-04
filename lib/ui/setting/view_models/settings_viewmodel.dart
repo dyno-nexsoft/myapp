@@ -9,14 +9,14 @@ import '../../../utils/result.dart';
 class SettingsViewModel extends ChangeNotifier {
   SettingsViewModel({required UserRepository userRepository})
     : _userRepository = userRepository {
-    load = Command0(_load)..execute();
+    load = CommandVoid(_load)..execute();
   }
 
   final UserRepository _userRepository;
   final _log = Logger('ProfileViewModel');
   User? _user;
 
-  late Command0 load;
+  late CommandVoid load;
 
   User? get user => _user;
 

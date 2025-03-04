@@ -13,9 +13,6 @@ import 'package:flutter/material.dart';
 class AppColors {
   AppColors._();
 
-  /// Color: #000000
-  static const Color black = Color(0xFF000000);
-
   /// MaterialColor:
   ///   50: #FFF2E9E0
   ///   100: #FFE0C9B3
@@ -39,6 +36,9 @@ class AppColors {
     800: Color(0xFF793300),
     900: Color(0xFF682300),
   });
+
+  /// Color: #FF0000
+  static const Color error = Color(0xFFFF0000);
 
   /// MaterialColor:
   ///   50: #FFF0F0F0
@@ -64,9 +64,9 @@ class AppColors {
     900: Color(0xFF505050),
   });
 
-  /// Color: #FF0000
-  static const Color red = Color(0xFFFF0000);
-
   /// Color: #FFFFFF
-  static const Color white = Color(0xFFFFFFFF);
+  static const Color onPrimary = Color(0xFFFFFFFF);
+
+  /// Color: #000000
+  static const Color primary = Color(0xFF000000);
 }

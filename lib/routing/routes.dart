@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 
 import '../ui/auth/login/view_models/login_viewmodel.dart';
 import '../ui/auth/login/widgets/login_screen.dart';
+import '../ui/auth/sign_up/view_models/sign_up_viewmodel.dart';
+import '../ui/auth/sign_up/widgets/sign_up_screen.dart';
 import '../ui/auth/welcome/view_models/welcome_viewmodel.dart';
 import '../ui/auth/welcome/widgets/welcome_screen.dart';
 import '../ui/dashboard/view_models/dashboard_viewmodel.dart';
@@ -43,9 +45,8 @@ class LoginRoute extends GoRouteData {
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return LoginScreen(
-      viewModel: LoginViewModel(authRepository: context.read()),
-    );
+    final viewModel = LoginViewModel(authRepository: context.read());
+    return LoginScreen(viewModel: viewModel);
   }
 }
 
@@ -54,7 +55,8 @@ class SignUpRoute extends GoRouteData {
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return const Placeholder();
+    final viewModel = SignUpViewModel(authRepository: context.read());
+    return SignUpScreen(viewModel: viewModel);
   }
 }
 

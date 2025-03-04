@@ -4,8 +4,8 @@ import 'package:flutter/foundation.dart';
 
 import 'result.dart';
 
-typedef CommandAction0<T> = Future<Result<T>> Function();
-typedef CommandAction1<T, A> = Future<Result<T>> Function(A);
+typedef CommandActionVoid<T> = Future<Result<T>> Function();
+typedef CommandActionArgument<T, A> = Future<Result<T>> Function(A);
 
 /// Facilitates interaction with a ViewModel.
 ///
@@ -13,8 +13,8 @@ typedef CommandAction1<T, A> = Future<Result<T>> Function(A);
 /// exposes its running and error states,
 /// and ensures that it can't be launched again until it finishes.
 ///
-/// Use [Command0] for actions without arguments.
-/// Use [Command1] for actions with one argument.
+/// Use [CommandVoid] for actions without arguments.
+/// Use [CommandArgument] for actions with one argument.
 ///
 /// Actions must return a [Result].
 ///
@@ -46,7 +46,7 @@ abstract class Command<T> extends ChangeNotifier {
   }
 
   /// Internal execute implementation
-  Future<void> _execute(CommandAction0<T> action) async {
+  Future<void> _execute(CommandActionVoid<T> action) async {
     // Ensure the action can't launch multiple times.
     // e.g. avoid multiple taps on button
     if (_running) return;
@@ -67,11 +67,11 @@ abstract class Command<T> extends ChangeNotifier {
 }
 
 /// [Command] without arguments.
-/// Takes a [CommandAction0] as action.
-class Command0<T> extends Command<T> {
-  Command0(this._action);
+/// Takes a [CommandActionVoid] as action.
+class CommandVoid<T> extends Command<T> {
+  CommandVoid(this._action);
 
-  final CommandAction0<T> _action;
+  final CommandActionVoid<T> _action;
 
   /// Executes the action.
   Future<void> execute() async {
@@ -80,11 +80,11 @@ class Command0<T> extends Command<T> {
 }
 
 /// [Command] with one argument.
-/// Takes a [CommandAction1] as action.
-class Command1<T, A> extends Command<T> {
-  Command1(this._action);
+/// Takes a [CommandActionArgument] as action.
+class CommandArgument<T, A> extends Command<T> {
+  CommandArgument(this._action);
 
-  final CommandAction1<T, A> _action;
+  final CommandActionArgument<T, A> _action;
 
   /// Executes the action with the argument.
   Future<void> execute(A argument) async {
