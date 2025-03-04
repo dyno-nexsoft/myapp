@@ -16,6 +16,7 @@ class LoginViewModel {
   late CommandArgument login;
 
   Future<Result<void>> _login((String, String) credentials) async {
+    await Future.delayed(const Duration(seconds: 2));
     final (email, password) = credentials;
     final result = await _authRepository.login(
       email: email,

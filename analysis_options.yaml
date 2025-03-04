@@ -12,6 +12,7 @@ linter:
     - prefer_relative_imports
     # Custom
     - sort_constructors_first
+    - sort_unnamed_constructors_first
     - avoid_relative_lib_imports
     - avoid_redundant_argument_values
     - prefer_const_constructors

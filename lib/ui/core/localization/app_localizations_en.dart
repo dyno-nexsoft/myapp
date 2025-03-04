@@ -81,4 +81,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get or => 'Or';
+
+  @override
+  String get rememberMe => 'Remember me';
+
+  @override
+  String get forgotPassword => 'Forgot Password?';
+
+  @override
+  String get welcomeBack => 'Welcome Back!';
+
+  @override
+  String get hrTaskManagement => 'Log in and manage your HR tasks with ease';
 }

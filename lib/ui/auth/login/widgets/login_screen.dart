@@ -1,123 +1,107 @@
-// Suggested code may be subject to a license. Learn more: ~LicenseLog:741897899.
-// Suggested code may be subject to a license. Learn more: ~LicenseLog:2402485050.
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
 import '../../../../routing/routes.dart';
 import '../../../core/localization/app_localizations.dart';
+import '../../../core/themes/dimens.dart';
+import '../../../core/widgets/adaptive_checkbox.dart';
+import '../../../core/widgets/adaptive_dialog.dart';
+import '../../welcome/widgets/social_buttons.dart';
 import '../view_models/login_viewmodel.dart';
 
-class LoginScreen extends StatefulWidget {
+class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key, required this.viewModel});
 
   final LoginViewModel viewModel;
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<LoginScreen> {
-  final TextEditingController _email = TextEditingController(
-    text: 'email@example.com',
-  );
-  final TextEditingController _password = TextEditingController(
-    text: 'password',
-  );
-
-  @override
-  void initState() {
-    super.initState();
-    widget.viewModel.login.addListener(_onResult);
-  }
-
-  @override
-  void didUpdateWidget(covariant LoginScreen oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    oldWidget.viewModel.login.removeListener(_onResult);
-    widget.viewModel.login.addListener(_onResult);
-  }
-
-  @override
-  void dispose() {
-    widget.viewModel.login.removeListener(_onResult);
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+      resizeToAvoidBottomInset: false,
+      appBar: AppBar(),
+      body: Padding(
+        padding: Dimens.of(context).edgeInsetsHorizontal,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              AppLocalizations.of(context).welcomeBack,
+              style: TextTheme.of(context).headlineLarge,
+            ),
+            Dimens.of(context).gapVertical,
+            Text(
+              AppLocalizations.of(context).hrTaskManagement,
+              style: TextTheme.of(context).bodyLarge,
+            ),
+            const Spacer(),
+
+            TextFormField(
+              initialValue: 'hr.admin@google.com',
+              keyboardType: TextInputType.emailAddress,
+              decoration: InputDecoration(
+                hintText: AppLocalizations.of(context).email,
+                prefixIcon: const Icon(Icons.mail),
+              ),
+            ),
+            Dimens.of(context).gapVertical,
+            TextFormField(
+              initialValue: 'password',
+              obscureText: true,
+              keyboardType: TextInputType.visiblePassword,
+              decoration: InputDecoration(
+                hintText: AppLocalizations.of(context).password,
+                prefixIcon: const Icon(Icons.lock),
+                suffixIcon: const Icon(Icons.visibility_off),
+              ),
+            ),
+            Row(
               children: [
-                Text(
-                  AppLocalizations.of(context).welcome,
-                  style: Theme.of(context).textTheme.titleLarge,
+                AdaptiveCheckbox(value: false, onChanged: (_) {}),
+                Text(AppLocalizations.of(context).rememberMe),
+                const Spacer(),
+                TextButton(
+                  onPressed: () => const ForgotPasswordRoute().push(context),
+                  child: Text(AppLocalizations.of(context).forgotPassword),
                 ),
-                const SizedBox(height: 20),
-                TextField(
-                  controller: _email,
-                  decoration: InputDecoration(
-                    labelText: AppLocalizations.of(context).email,
-                    border: const OutlineInputBorder(),
-                  ),
-                ),
-                const SizedBox(height: 20),
-                TextField(
-                  controller: _password,
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    labelText: AppLocalizations.of(context).password,
-                    border: const OutlineInputBorder(),
-                  ),
-                ),
-                const SizedBox(height: 20),
-                widget.viewModel.login.running
-                    ? const CircularProgressIndicator()
-                    : ElevatedButton(
-                      onPressed:
-                          () => widget.viewModel.login.execute((
-                            _email.value.text,
-                            _password.value.text,
-                          )),
-                      child: Text(AppLocalizations.of(context).login),
-                    ),
               ],
             ),
+            const Spacer(),
+
+            const SocialButtons(),
+          ],
+        ),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        child: ListenableBuilder(
+          listenable: viewModel.login,
+          builder: (context, child) {
+            if (viewModel.login.running) {
+              SchedulerBinding.instance.addPostFrameCallback((_) async {
+                await AdaptiveDialog(
+                  title: const Center(
+                    child: SizedBox.square(
+                      dimension: 48,
+                      child: CircularProgressIndicator.adaptive(),
+                    ),
+                  ),
+                  content: Text(
+                    "${AppLocalizations.of(context).login}...",
+                    textAlign: TextAlign.center,
+                  ),
+                ).show(context);
+              });
+            }
+            return child!;
+          },
+          child: FilledButton(
+            style: FilledButton.styleFrom(
+              minimumSize: const Size(double.infinity, 42),
+            ),
+            onPressed: () => viewModel.login.execute(('email', 'password')),
+            child: Text(AppLocalizations.of(context).login),
           ),
         ),
       ),
     );
-  }
-
-  void _onResult() {
-    if (widget.viewModel.login.completed) {
-      SchedulerBinding.instance.addPostFrameCallback((_) {
-        widget.viewModel.login.clearResult();
-        const HomeRoute().go(context);
-      });
-    }
-
-    if (widget.viewModel.login.error) {
-      SchedulerBinding.instance.addPostFrameCallback((_) {
-        widget.viewModel.login.clearResult();
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(AppLocalizations.of(context).errorWhileLogin),
-            action: SnackBarAction(
-              label: AppLocalizations.of(context).tryAgain,
-              onPressed:
-                  () => widget.viewModel.login.execute((
-                    _email.value.text,
-                    _password.value.text,
-                  )),
-            ),
-          ),
-        );
-      });
-    }
   }
 }

@@ -25,5 +25,9 @@
   "createAccount": "Create Your Account",
   "elevateHrManagementWithDinosaur": "Elevate Your HR Management with Dinosaur.",
   "haveAccount": "Already have an acount? ",
-  "or": "Or"
+  "or": "Or",
+  "rememberMe": "Remember me",
+  "forgotPassword": "Forgot Password?",
+  "welcomeBack": "Welcome Back!",
+  "hrTaskManagement": "Log in and manage your HR tasks with ease"
 }

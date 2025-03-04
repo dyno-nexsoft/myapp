@@ -3,6 +3,14 @@ import 'package:flutter/material.dart';
 abstract final class Dimens {
   const Dimens();
 
+  /// Get dimensions definition based on screen size
+  factory Dimens.of(BuildContext context) => switch (MediaQuery.sizeOf(
+    context,
+  ).width) {
+    > 600 && < 840 => desktop,
+    _ => mobile,
+  };
+
   double get paddingDefault => 16.0;
 
   double get paddingScreenHorizontal;
@@ -13,18 +21,12 @@ abstract final class Dimens {
 
   static const Dimens desktop = _DimensDesktop();
   static const Dimens mobile = _DimensMobile();
-
-  /// Get dimensions definition based on screen size
-  factory Dimens.of(BuildContext context) => switch (MediaQuery.sizeOf(
-    context,
-  ).width) {
-    > 600 && < 840 => desktop,
-    _ => mobile,
-  };
 }
 
 /// Mobile dimensions
 final class _DimensMobile extends Dimens {
+
+  const _DimensMobile();
   @override
   final double paddingScreenHorizontal = 16.0;
 
@@ -33,12 +35,12 @@ final class _DimensMobile extends Dimens {
 
   @override
   final double profilePictureSize = 84.0;
-
-  const _DimensMobile();
 }
 
 /// Desktop/Web dimensions
 final class _DimensDesktop extends Dimens {
+
+  const _DimensDesktop();
   @override
   final double paddingScreenHorizontal = 100.0;
 
@@ -47,8 +49,6 @@ final class _DimensDesktop extends Dimens {
 
   @override
   final double profilePictureSize = 128.0;
-
-  const _DimensDesktop();
 }
 
 extension DimensExt on Dimens {

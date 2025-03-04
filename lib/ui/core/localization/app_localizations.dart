@@ -236,6 +236,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Or'**
   String get or;
+
+  /// No description provided for @rememberMe.
+  ///
+  /// In en, this message translates to:
+  /// **'Remember me'**
+  String get rememberMe;
+
+  /// No description provided for @forgotPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Forgot Password?'**
+  String get forgotPassword;
+
+  /// No description provided for @welcomeBack.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome Back!'**
+  String get welcomeBack;
+
+  /// No description provided for @hrTaskManagement.
+  ///
+  /// In en, this message translates to:
+  /// **'Log in and manage your HR tasks with ease'**
+  String get hrTaskManagement;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

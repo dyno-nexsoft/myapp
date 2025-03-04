@@ -8,6 +8,9 @@ part 'user.g.dart';
 class User with _$User {
   const User({required this.name, required this.picture});
 
+  /// Factory constructor for creating a User from a JSON map.
+  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
+
   /// The user's name.
   @override
   final String name;
@@ -15,9 +18,6 @@ class User with _$User {
   /// The user's picture URL.
   @override
   final String picture;
-
-  /// Factory constructor for creating a User from a JSON map.
-  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 
   /// Converts the User object to a JSON map.
   Map<String, dynamic> toJson() => _$UserToJson(this);
