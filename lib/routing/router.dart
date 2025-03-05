@@ -13,6 +13,7 @@ GoRouter? _router;
 /// to /login when the user logs out.
 GoRouter router(AuthRepository authRepository) =>
     _router ??= GoRouter(
+      debugLogDiagnostics: true,
       redirect: _redirect,
       refreshListenable: authRepository,
       routes: $appRoutes,
@@ -20,6 +21,14 @@ GoRouter router(AuthRepository authRepository) =>
 
 // From https://github.com/flutter/packages/blob/main/packages/go_router/example/lib/redirection.dart
 Future<String?> _redirect(BuildContext context, GoRouterState state) async {
+  if ([
+    const ForgotPasswordRoute().location,
+    const OtpRoute().location,
+    const SetNewPasswordRoute().location,
+  ].contains(state.matchedLocation)) {
+    return null;
+  }
+
   // if the user is not logged in, they need to login
   final loggedIn = await context.read<AuthRepository>().isAuthenticated;
   final loggingIn = <String>[

@@ -72,7 +72,7 @@ class HomeAppBar extends StatelessWidget {
                         ),
                         Container(
                           margin: Dimens.of(context).edgeInsetsAll.subtract(
-                            const EdgeInsets.only(top: 16),
+                            const EdgeInsetsDirectional.only(top: 16),
                           ),
                           padding: Dimens.of(context).edgeInsetsAll / 2,
                           decoration: BoxDecoration(
@@ -171,7 +171,7 @@ class HomeAppBar extends StatelessWidget {
                 left: 0,
                 child: ListTile(
                   dense: true,
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+                  contentPadding: const EdgeInsetsDirectional.symmetric(horizontal: 16),
                   leading: CircleAvatar(
                     backgroundImage: AppAssets.images.user.provider(),
                   ),

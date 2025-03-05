@@ -7,11 +7,15 @@ abstract final class AppTheme {
 
   static const _inputDecorationTheme = InputDecorationTheme(
     isDense: true,
-    contentPadding: EdgeInsets.all(16),
+    contentPadding: EdgeInsetsDirectional.all(16),
     prefixIconConstraints: BoxConstraints(maxHeight: 24, minWidth: 48),
     suffixIconConstraints: BoxConstraints(maxHeight: 24, minWidth: 48),
+    hintStyle: TextStyle(color: AppColors.grey),
     border: OutlineInputBorder(
       borderSide: BorderSide.none,
+      borderRadius: BorderRadius.all(Radius.circular(16)),
+    ),
+    focusedBorder: OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(16)),
     ),
   );
@@ -20,14 +24,14 @@ abstract final class AppTheme {
     enableFeedback: true,
     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
     padding: WidgetStatePropertyAll(
-      EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      EdgeInsetsDirectional.symmetric(horizontal: 16, vertical: 8),
     ),
     minimumSize: WidgetStatePropertyAll(Size(112, 56)),
   );
 
   static const _bottomAppBarTheme = BottomAppBarTheme(
     height: 56 + 16 * 2, // Button height
-    padding: EdgeInsets.all(16),
+    padding: EdgeInsetsDirectional.all(16),
     shape: CircularNotchedRectangle(),
   );
 
@@ -50,29 +54,43 @@ abstract final class AppTheme {
       onError: AppColors.primary,
     ),
     dividerTheme: DividerThemeData(color: AppColors.grey.shade200),
-    shadowColor: AppColors.primary,
-    badgeTheme: const BadgeThemeData(
-      backgroundColor: AppColors.error,
-      textColor: AppColors.primary,
-    ),
+    shadowColor: Colors.black,
+    badgeTheme: const BadgeThemeData(backgroundColor: Colors.red),
     cardTheme: CardTheme(
       color: AppColors.grey.shade50,
-      shadowColor: AppColors.primary,
+      shadowColor: Colors.black,
     ),
     textTheme: _textTheme,
     inputDecorationTheme: _inputDecorationTheme.copyWith(
       filled: true,
       fillColor: AppColors.grey.shade50,
-      hintStyle: const TextStyle(color: AppColors.grey),
+      counterStyle: const TextStyle(color: AppColors.grey),
+      focusedBorder: _inputDecorationTheme.focusedBorder?.copyWith(
+        // ignore: avoid_redundant_argument_values
+        borderSide: const BorderSide(color: AppColors.primary),
+      ),
     ),
+    elevatedButtonTheme: const ElevatedButtonThemeData(style: _buttonStyle),
     filledButtonTheme: const FilledButtonThemeData(style: _buttonStyle),
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: _buttonStyle.copyWith(
         side: WidgetStateProperty.all(const BorderSide(color: AppColors.grey)),
       ),
     ),
+    textButtonTheme: TextButtonThemeData(
+      style: _buttonStyle.copyWith(
+        minimumSize: const WidgetStatePropertyAll(Size.zero),
+      ),
+    ),
+    iconButtonTheme: IconButtonThemeData(
+      style: _buttonStyle.copyWith(
+        padding: const WidgetStatePropertyAll(EdgeInsetsDirectional.all(16)),
+        minimumSize: const WidgetStatePropertyAll(Size.zero),
+      ),
+    ),
     bottomAppBarTheme: _bottomAppBarTheme.copyWith(
-      shadowColor: AppColors.primary,
+      elevation: 0.5,
+      shadowColor: Colors.black,
     ),
     progressIndicatorTheme: _progressIndicatorThemeData,
   );
@@ -83,7 +101,7 @@ abstract final class AppTheme {
       brightness: Brightness.dark,
       primary: AppColors.onPrimary,
       onPrimary: AppColors.primary,
-      secondary: Color.fromRGBO(255, 255, 255, 0.9),
+      secondary: Color.fromRGBO(255, 255, 255, 0.8),
       onSecondary: AppColors.primary,
       surface: AppColors.primary,
       onSurface: AppColors.onPrimary,
@@ -91,20 +109,31 @@ abstract final class AppTheme {
       onError: AppColors.onPrimary,
     ),
     dividerTheme: DividerThemeData(color: AppColors.grey.shade400),
-    shadowColor: AppColors.onPrimary,
-    badgeTheme: const BadgeThemeData(
-      backgroundColor: AppColors.error,
-      textColor: AppColors.onPrimary,
-    ),
-    cardTheme: CardTheme(
+    shadowColor: Colors.white,
+    badgeTheme: const BadgeThemeData(backgroundColor: Colors.red),
+    cardTheme: const CardTheme(
       color: AppColors.primary,
       surfaceTintColor: AppColors.onPrimary,
-      shadowColor: AppColors.grey.shade400,
     ),
     textTheme: _textTheme,
-    inputDecorationTheme: _inputDecorationTheme,
+    inputDecorationTheme: _inputDecorationTheme.copyWith(
+      filled: true,
+      fillColor: AppColors.grey.shade900,
+    ),
+    elevatedButtonTheme: const ElevatedButtonThemeData(style: _buttonStyle),
     filledButtonTheme: const FilledButtonThemeData(style: _buttonStyle),
     outlinedButtonTheme: const OutlinedButtonThemeData(style: _buttonStyle),
+    textButtonTheme: TextButtonThemeData(
+      style: _buttonStyle.copyWith(
+        minimumSize: const WidgetStatePropertyAll(Size.zero),
+      ),
+    ),
+    iconButtonTheme: IconButtonThemeData(
+      style: _buttonStyle.copyWith(
+        padding: const WidgetStatePropertyAll(EdgeInsetsDirectional.all(16)),
+        minimumSize: const WidgetStatePropertyAll(Size.zero),
+      ),
+    ),
     bottomAppBarTheme: _bottomAppBarTheme,
   );
 }

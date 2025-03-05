@@ -6,7 +6,8 @@ import '../../../core/localization/app_localizations.dart';
 import '../../../core/themes/dimens.dart';
 import '../../../core/widgets/adaptive_checkbox.dart';
 import '../../../core/widgets/adaptive_dialog.dart';
-import '../../welcome/widgets/social_buttons.dart';
+import '../../widgets/auth_title.dart';
+import '../../widgets/social_buttons.dart';
 import '../view_models/login_viewmodel.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -24,14 +25,9 @@ class LoginScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              AppLocalizations.of(context).welcomeBack,
-              style: TextTheme.of(context).headlineLarge,
-            ),
-            Dimens.of(context).gapVertical,
-            Text(
-              AppLocalizations.of(context).hrTaskManagement,
-              style: TextTheme.of(context).bodyLarge,
+            AuthTitle(
+              title: AppLocalizations.of(context).welcomeBack,
+              subtitle: AppLocalizations.of(context).hrTaskManagement,
             ),
             const Spacer(),
 
@@ -94,9 +90,6 @@ class LoginScreen extends StatelessWidget {
             return child!;
           },
           child: FilledButton(
-            style: FilledButton.styleFrom(
-              minimumSize: const Size(double.infinity, 42),
-            ),
             onPressed: () => viewModel.login.execute(('email', 'password')),
             child: Text(AppLocalizations.of(context).login),
           ),

@@ -26,6 +26,10 @@ class AuthRepositoryDev extends AuthRepository {
     return const Result.ok(null);
   }
 
+  @override
+  Future<Result<void>> setNewPassword({required String password}) =>
+      login(email: password, password: password);
+
   /// Logout is always successful in dev scenarios
   @override
   Future<Result<void>> logout() async {

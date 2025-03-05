@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../config/assets.gen.dart';
-import '../../../core/themes/dimens.dart';
+import '../../../config/assets.gen.dart';
+import '../../core/themes/dimens.dart';
 
 class SocialButtons extends StatelessWidget {
   const SocialButtons({super.key});

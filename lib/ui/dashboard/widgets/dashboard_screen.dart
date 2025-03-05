@@ -27,7 +27,7 @@ class DashboardScreen extends StatelessWidget {
         height: 64,
         notchMargin: 8,
         elevation: 10,
-        padding: EdgeInsets.zero,
+        padding: EdgeInsetsDirectional.zero,
         clipBehavior: Clip.hardEdge,
         child: BottomNavigationBar(
           currentIndex: navigationShell.currentIndex,

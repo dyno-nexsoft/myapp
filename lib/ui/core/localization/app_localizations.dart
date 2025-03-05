@@ -260,6 +260,108 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Log in and manage your HR tasks with ease'**
   String get hrTaskManagement;
+
+  /// No description provided for @resetYourPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset Your Password'**
+  String get resetYourPassword;
+
+  /// No description provided for @enterEmailForPasswordReset.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter the email associated with your Dinosaur account. We\'ll send you an OTP code to reset your password.'**
+  String get enterEmailForPasswordReset;
+
+  /// No description provided for @sendOtpCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Send OTP Code'**
+  String get sendOtpCode;
+
+  /// No description provided for @loginAndManageTasks.
+  ///
+  /// In en, this message translates to:
+  /// **'Log in and manage your HR tasks with ease'**
+  String get loginAndManageTasks;
+
+  /// No description provided for @enterOtpCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter OTP code'**
+  String get enterOtpCode;
+
+  /// No description provided for @checkEmailForOtp.
+  ///
+  /// In en, this message translates to:
+  /// **'Check your email inbox for the OTP code we sent you. Please enter it below to proceed with the password reset.'**
+  String get checkEmailForOtp;
+
+  /// No description provided for @resendCodeInSeconds.
+  ///
+  /// In en, this message translates to:
+  /// **'You can resend the code in'**
+  String get resendCodeInSeconds;
+
+  /// No description provided for @seconds.
+  ///
+  /// In en, this message translates to:
+  /// **'seconds'**
+  String get seconds;
+
+  /// No description provided for @resendCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Resend code'**
+  String get resendCode;
+
+  /// No description provided for @secureYourAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Secure Your Account'**
+  String get secureYourAccount;
+
+  /// No description provided for @createNewPasswordInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'Almost there! Create a new password for your Dinosaur account to keep it secure. Remember to choose a strong and unique password.'**
+  String get createNewPasswordInfo;
+
+  /// No description provided for @newPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'New Password'**
+  String get newPassword;
+
+  /// No description provided for @confirmNewPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm New Password'**
+  String get confirmNewPassword;
+
+  /// No description provided for @saveNewPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Save New Password'**
+  String get saveNewPassword;
+
+  /// No description provided for @youreAllSet.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'re All Set!'**
+  String get youreAllSet;
+
+  /// No description provided for @passwordChangedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Congratulations! Your password has been changed successfully.'**
+  String get passwordChangedSuccessfully;
+
+  /// No description provided for @goToHomepage.
+  ///
+  /// In en, this message translates to:
+  /// **'Go to Homepage'**
+  String get goToHomepage;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

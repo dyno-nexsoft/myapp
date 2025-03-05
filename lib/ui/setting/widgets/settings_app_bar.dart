@@ -62,7 +62,7 @@ class SettingsAppBar extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Stack(
-                        alignment: Alignment.bottomRight,
+                        alignment: AlignmentDirectional.bottomEnd,
                         children: [
                           Padding(
                             padding: Dimens.of(context).edgeInsetsAll / 3,

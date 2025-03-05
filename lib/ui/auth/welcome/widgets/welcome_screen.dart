@@ -4,8 +4,9 @@ import '../../../../config/assets.gen.dart';
 import '../../../../routing/routes.dart';
 import '../../../core/localization/app_localizations.dart';
 import '../../../core/themes/dimens.dart';
+import '../../widgets/auth_title.dart';
+import '../../widgets/social_buttons.dart';
 import '../view_models/welcome_viewmodel.dart';
-import 'social_buttons.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key, required this.viewModel});
@@ -32,14 +33,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             ),
 
             const Spacer(),
-            Text(
-              AppLocalizations.of(context).letsGetStarted,
-              style: TextTheme.of(context).headlineLarge,
-            ),
-            Dimens.of(context).gapVertical,
-            Text(
-              AppLocalizations.of(context).accountDetails,
-              style: TextTheme.of(context).titleMedium,
+            AuthTitle(
+              title: AppLocalizations.of(context).letsGetStarted,
+              subtitle: AppLocalizations.of(context).accountDetails,
+              crossAxisAlignment: CrossAxisAlignment.center,
             ),
 
             const Spacer(),

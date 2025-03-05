@@ -93,4 +93,55 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get hrTaskManagement => 'Log in and manage your HR tasks with ease';
+
+  @override
+  String get resetYourPassword => 'Reset Your Password';
+
+  @override
+  String get enterEmailForPasswordReset => 'Please enter the email associated with your Dinosaur account. We\'ll send you an OTP code to reset your password.';
+
+  @override
+  String get sendOtpCode => 'Send OTP Code';
+
+  @override
+  String get loginAndManageTasks => 'Log in and manage your HR tasks with ease';
+
+  @override
+  String get enterOtpCode => 'Enter OTP code';
+
+  @override
+  String get checkEmailForOtp => 'Check your email inbox for the OTP code we sent you. Please enter it below to proceed with the password reset.';
+
+  @override
+  String get resendCodeInSeconds => 'You can resend the code in';
+
+  @override
+  String get seconds => 'seconds';
+
+  @override
+  String get resendCode => 'Resend code';
+
+  @override
+  String get secureYourAccount => 'Secure Your Account';
+
+  @override
+  String get createNewPasswordInfo => 'Almost there! Create a new password for your Dinosaur account to keep it secure. Remember to choose a strong and unique password.';
+
+  @override
+  String get newPassword => 'New Password';
+
+  @override
+  String get confirmNewPassword => 'Confirm New Password';
+
+  @override
+  String get saveNewPassword => 'Save New Password';
+
+  @override
+  String get youreAllSet => 'You\'re All Set!';
+
+  @override
+  String get passwordChangedSuccessfully => 'Congratulations! Your password has been changed successfully.';
+
+  @override
+  String get goToHomepage => 'Go to Homepage';
 }

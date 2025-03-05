@@ -6,25 +6,18 @@ part of 'routes.dart';
 // GoRouterGenerator
 // **************************************************************************
 
-List<RouteBase> get $appRoutes => [$welcomeRoute, $dashboardRoute];
+List<RouteBase> get $appRoutes => [
+  $welcomeRoute,
+  $forgotPasswordRoute,
+  $dashboardRoute,
+];
 
 RouteBase get $welcomeRoute => GoRouteData.$route(
   path: '/',
 
   factory: $WelcomeRouteExtension._fromState,
   routes: [
-    GoRouteData.$route(
-      path: 'login',
-
-      factory: $LoginRouteExtension._fromState,
-      routes: [
-        GoRouteData.$route(
-          path: 'forgot-password',
-
-          factory: $ForgotPasswordRouteExtension._fromState,
-        ),
-      ],
-    ),
+    GoRouteData.$route(path: 'login', factory: $LoginRouteExtension._fromState),
     GoRouteData.$route(
       path: 'signup',
 
@@ -67,11 +60,10 @@ extension $LoginRouteExtension on LoginRoute {
   void replace(BuildContext context) => context.replace(location);
 }
 
-extension $ForgotPasswordRouteExtension on ForgotPasswordRoute {
-  static ForgotPasswordRoute _fromState(GoRouterState state) =>
-      const ForgotPasswordRoute();
+extension $SignUpRouteExtension on SignUpRoute {
+  static SignUpRoute _fromState(GoRouterState state) => const SignUpRoute();
 
-  String get location => GoRouteData.$location('/login/forgot-password');
+  String get location => GoRouteData.$location('/signup');
 
   void go(BuildContext context) => context.go(location);
 
@@ -83,10 +75,57 @@ extension $ForgotPasswordRouteExtension on ForgotPasswordRoute {
   void replace(BuildContext context) => context.replace(location);
 }
 
-extension $SignUpRouteExtension on SignUpRoute {
-  static SignUpRoute _fromState(GoRouterState state) => const SignUpRoute();
+RouteBase get $forgotPasswordRoute => GoRouteData.$route(
+  path: '/forgot-password',
 
-  String get location => GoRouteData.$location('/signup');
+  factory: $ForgotPasswordRouteExtension._fromState,
+  routes: [
+    GoRouteData.$route(path: 'otp', factory: $OtpRouteExtension._fromState),
+    GoRouteData.$route(
+      path: 'set-new-password',
+
+      factory: $SetNewPasswordRouteExtension._fromState,
+    ),
+  ],
+);
+
+extension $ForgotPasswordRouteExtension on ForgotPasswordRoute {
+  static ForgotPasswordRoute _fromState(GoRouterState state) =>
+      const ForgotPasswordRoute();
+
+  String get location => GoRouteData.$location('/forgot-password');
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $OtpRouteExtension on OtpRoute {
+  static OtpRoute _fromState(GoRouterState state) => const OtpRoute();
+
+  String get location => GoRouteData.$location('/forgot-password/otp');
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $SetNewPasswordRouteExtension on SetNewPasswordRoute {
+  static SetNewPasswordRoute _fromState(GoRouterState state) =>
+      const SetNewPasswordRoute();
+
+  String get location =>
+      GoRouteData.$location('/forgot-password/set-new-password');
 
   void go(BuildContext context) => context.go(location);
 

@@ -29,5 +29,22 @@
   "rememberMe": "Remember me",
   "forgotPassword": "Forgot Password?",
   "welcomeBack": "Welcome Back!",
-  "hrTaskManagement": "Log in and manage your HR tasks with ease"
+  "hrTaskManagement": "Log in and manage your HR tasks with ease",
+  "resetYourPassword": "Reset Your Password",
+  "enterEmailForPasswordReset": "Please enter the email associated with your Dinosaur account. We'll send you an OTP code to reset your password.",
+  "sendOtpCode": "Send OTP Code",
+  "loginAndManageTasks": "Log in and manage your HR tasks with ease",
+  "enterOtpCode": "Enter OTP code",
+  "checkEmailForOtp": "Check your email inbox for the OTP code we sent you. Please enter it below to proceed with the password reset.",
+  "resendCodeInSeconds": "You can resend the code in",
+  "seconds": "seconds",
+  "resendCode": "Resend code",
+  "secureYourAccount": "Secure Your Account",
+  "createNewPasswordInfo": "Almost there! Create a new password for your Dinosaur account to keep it secure. Remember to choose a strong and unique password.",
+  "newPassword": "New Password",
+  "confirmNewPassword": "Confirm New Password",
+  "saveNewPassword": "Save New Password",
+  "youreAllSet": "You're All Set!",
+  "passwordChangedSuccessfully": "Congratulations! Your password has been changed successfully.",
+  "goToHomepage": "Go to Homepage"
 }

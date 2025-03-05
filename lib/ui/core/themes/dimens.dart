@@ -25,7 +25,6 @@ abstract final class Dimens {
 
 /// Mobile dimensions
 final class _DimensMobile extends Dimens {
-
   const _DimensMobile();
   @override
   final double paddingScreenHorizontal = 16.0;
@@ -39,7 +38,6 @@ final class _DimensMobile extends Dimens {
 
 /// Desktop/Web dimensions
 final class _DimensDesktop extends Dimens {
-
   const _DimensDesktop();
   @override
   final double paddingScreenHorizontal = 100.0;
@@ -53,20 +51,25 @@ final class _DimensDesktop extends Dimens {
 
 extension DimensExt on Dimens {
   EdgeInsetsGeometry get edgeInsetsHorizontal =>
-      EdgeInsets.symmetric(horizontal: paddingDefault);
+      EdgeInsetsDirectional.symmetric(horizontal: paddingDefault);
 
   EdgeInsetsGeometry get edgeInsetsVertical =>
-      EdgeInsets.symmetric(vertical: paddingDefault);
+      EdgeInsetsDirectional.symmetric(vertical: paddingDefault);
 
-  EdgeInsetsGeometry get edgeInsetsAll => EdgeInsets.all(paddingDefault);
+  EdgeInsetsGeometry get edgeInsetsAll =>
+      EdgeInsetsDirectional.all(paddingDefault);
 
   Widget get gapHorizontal => SizedBox(width: paddingDefault);
 
   Widget get gapHorizontalSmall => SizedBox(width: paddingDefault / 2);
 
+  Widget get gapHorizontalLarge => SizedBox(width: paddingDefault * 2);
+
   Widget get gapVertical => SizedBox(height: paddingDefault);
 
   Widget get gapVerticalSmall => SizedBox(height: paddingDefault / 2);
+
+  Widget get gapVerticalLarge => SizedBox(height: paddingDefault * 2);
 
   BorderRadiusGeometry get borderRadiusStart =>
       BorderRadiusDirectional.horizontal(
@@ -84,7 +87,7 @@ extension DimensExt on Dimens {
 
   BorderRadius get borderRadiusAll => BorderRadius.circular(paddingDefault);
 
-  EdgeInsetsGeometry get edgeInsetsScreen => EdgeInsets.symmetric(
+  EdgeInsetsGeometry get edgeInsetsScreen => EdgeInsetsDirectional.symmetric(
     horizontal: paddingScreenHorizontal,
     vertical: paddingScreenVertical,
   );

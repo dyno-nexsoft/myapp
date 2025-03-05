@@ -2,8 +2,13 @@ import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
+import '../ui/auth/forgot_password/view_models/forgot_password_viewmodel.dart';
+import '../ui/auth/forgot_password/widgets/forgot_password_screen.dart';
+import '../ui/auth/forgot_password/widgets/set_new_password_screen.dart';
 import '../ui/auth/login/view_models/login_viewmodel.dart';
 import '../ui/auth/login/widgets/login_screen.dart';
+import '../ui/auth/otp/view_models/otp_viewmodel.dart';
+import '../ui/auth/otp/widgets/otp_screen.dart';
 import '../ui/auth/sign_up/view_models/sign_up_viewmodel.dart';
 import '../ui/auth/sign_up/widgets/sign_up_screen.dart';
 import '../ui/auth/welcome/view_models/welcome_viewmodel.dart';
@@ -20,12 +25,7 @@ part 'routes.g.dart';
 @TypedGoRoute<WelcomeRoute>(
   path: '/',
   routes: <TypedRoute<RouteData>>[
-    TypedGoRoute<LoginRoute>(
-      path: 'login',
-      routes: <TypedRoute<RouteData>>[
-        TypedGoRoute<ForgotPasswordRoute>(path: 'forgot-password'),
-      ],
-    ),
+    TypedGoRoute<LoginRoute>(path: 'login'),
     TypedGoRoute<SignUpRoute>(path: 'signup'),
   ],
 )
@@ -60,12 +60,40 @@ class SignUpRoute extends GoRouteData {
   }
 }
 
+@TypedGoRoute<ForgotPasswordRoute>(
+  path: '/forgot-password',
+  routes: [
+    TypedGoRoute<OtpRoute>(path: 'otp'),
+    TypedGoRoute<SetNewPasswordRoute>(path: 'set-new-password'),
+  ],
+)
 class ForgotPasswordRoute extends GoRouteData {
   const ForgotPasswordRoute();
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return const Placeholder();
+    final viewModel = ForgotPasswordViewModel(authRepository: context.read());
+    return ForgotPasswordScreen(viewModel: viewModel);
+  }
+}
+
+class OtpRoute extends GoRouteData {
+  const OtpRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    final viewModel = OtpViewModel();
+    return OtpScreen(viewModel: viewModel);
+  }
+}
+
+class SetNewPasswordRoute extends GoRouteData {
+  const SetNewPasswordRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    final viewModel = ForgotPasswordViewModel(authRepository: context.read());
+    return SetNewPasswordScreen(viewModel: viewModel);
   }
 }
 
