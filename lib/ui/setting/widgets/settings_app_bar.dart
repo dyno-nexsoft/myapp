@@ -50,7 +50,9 @@ class SettingsAppBar extends StatelessWidget {
               DecoratedBox(
                 decoration: BoxDecoration(
                   color: Theme.of(context).colorScheme.primary,
-                  borderRadius: Dimens.of(context).borderRadiusBottom,
+                  borderRadius: BorderRadius.vertical(
+                    bottom: Radius.circular(Dimens.of(context).padding),
+                  ),
                 ),
               ),
               Opacity(

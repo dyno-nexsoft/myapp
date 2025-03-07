@@ -2,7 +2,7 @@ import '../../../utils/result.dart';
 import 'auth_repository.dart';
 
 class AuthRepositoryDev extends AuthRepository {
-  bool _isAuthenticated = false;
+  bool _isAuthenticated = true;
 
   /// User is always authenticated in dev scenarios
   @override

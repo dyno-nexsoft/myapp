@@ -3,14 +3,17 @@ import 'package:flutter/material.dart';
 import '../../../config/colors.gen.dart';
 
 abstract final class AppTheme {
-  static const _textTheme = TextTheme();
+  static const _textTheme = TextTheme(
+    bodyLarge: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
+    bodyMedium: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+    bodySmall: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+  );
 
   static const _inputDecorationTheme = InputDecorationTheme(
     isDense: true,
     contentPadding: EdgeInsetsDirectional.all(16),
     prefixIconConstraints: BoxConstraints(maxHeight: 24, minWidth: 48),
     suffixIconConstraints: BoxConstraints(maxHeight: 24, minWidth: 48),
-    hintStyle: TextStyle(color: AppColors.grey),
     border: OutlineInputBorder(
       borderSide: BorderSide.none,
       borderRadius: BorderRadius.all(Radius.circular(16)),
@@ -30,9 +33,13 @@ abstract final class AppTheme {
   );
 
   static const _bottomAppBarTheme = BottomAppBarTheme(
-    height: 56 + 16 * 2, // Button height
+    height: 56 + 16 * 2, // Button height + padding
     padding: EdgeInsetsDirectional.all(16),
     shape: CircularNotchedRectangle(),
+  );
+
+  static const _navigationBarThemeData = NavigationBarThemeData(
+    height: 56 + 8 * 2, // Button height + padding
   );
 
   static const _progressIndicatorThemeData = ProgressIndicatorThemeData(
@@ -40,31 +47,38 @@ abstract final class AppTheme {
     strokeWidth: 8,
   );
 
+  static const _tabBarThemeData = TabBarThemeData(
+    indicatorSize: TabBarIndicatorSize.tab,
+    dividerColor: Colors.transparent,
+    indicator: BoxDecoration(
+      borderRadius: BorderRadius.all(Radius.circular(8)),
+    ),
+    splashBorderRadius: BorderRadius.all(Radius.circular(8)),
+  );
+
   static final lightTheme = ThemeData(
     brightness: Brightness.light,
-    colorScheme: const ColorScheme(
+    colorScheme: ColorScheme(
       brightness: Brightness.light,
       primary: AppColors.primary,
       onPrimary: AppColors.onPrimary,
-      secondary: Color.fromRGBO(0, 0, 0, 0.5),
+      secondary: AppColors.primary.withAlpha((255 * 0.5).round()),
       onSecondary: AppColors.onPrimary,
-      surface: AppColors.onPrimary,
-      onSurface: AppColors.primary,
+      surface: Colors.white,
+      onSurface: Colors.black,
       error: AppColors.error,
       onError: AppColors.primary,
     ),
-    dividerTheme: DividerThemeData(color: AppColors.grey.shade200),
-    shadowColor: Colors.black,
-    badgeTheme: const BadgeThemeData(backgroundColor: Colors.red),
-    cardTheme: CardTheme(
-      color: AppColors.grey.shade50,
-      shadowColor: Colors.black,
+    textTheme: _textTheme.copyWith(
+      bodySmall: _textTheme.bodySmall?.copyWith(color: AppColors.text),
+      bodyMedium: _textTheme.bodySmall?.copyWith(color: AppColors.text),
+      bodyLarge: _textTheme.bodySmall?.copyWith(color: AppColors.text),
     ),
-    textTheme: _textTheme,
     inputDecorationTheme: _inputDecorationTheme.copyWith(
       filled: true,
       fillColor: AppColors.grey.shade50,
       counterStyle: const TextStyle(color: AppColors.grey),
+      hintStyle: const TextStyle(color: AppColors.grey),
       focusedBorder: _inputDecorationTheme.focusedBorder?.copyWith(
         // ignore: avoid_redundant_argument_values
         borderSide: const BorderSide(color: AppColors.primary),
@@ -92,33 +106,47 @@ abstract final class AppTheme {
       elevation: 0.5,
       shadowColor: Colors.black,
     ),
-    progressIndicatorTheme: _progressIndicatorThemeData,
+    navigationBarTheme: _navigationBarThemeData.copyWith(
+      elevation: 0.5,
+      shadowColor: Colors.black,
+    ),
+    progressIndicatorTheme: _progressIndicatorThemeData.copyWith(
+      circularTrackColor: Colors.white,
+    ),
+    tabBarTheme: _tabBarThemeData.copyWith(
+      labelColor: AppColors.onPrimary,
+      indicator: BoxDecoration(
+        color: AppColors.primary,
+        borderRadius: _tabBarThemeData.splashBorderRadius,
+      ),
+    ),
+    dividerTheme: DividerThemeData(color: AppColors.grey.shade200),
+    shadowColor: Colors.black,
+    cardTheme: CardThemeData(
+      elevation: 0,
+      color: AppColors.grey.shade50,
+      shadowColor: Colors.black,
+    ),
   );
 
   static final darkTheme = ThemeData(
     brightness: Brightness.dark,
-    colorScheme: const ColorScheme(
+    colorScheme: ColorScheme(
       brightness: Brightness.dark,
       primary: AppColors.onPrimary,
       onPrimary: AppColors.primary,
-      secondary: Color.fromRGBO(255, 255, 255, 0.8),
+      secondary: AppColors.onPrimary.withAlpha((255 * 0.8).round()),
       onSecondary: AppColors.primary,
-      surface: AppColors.primary,
-      onSurface: AppColors.onPrimary,
+      surface: Colors.black,
+      onSurface: Colors.white,
       error: AppColors.error,
       onError: AppColors.onPrimary,
     ),
-    dividerTheme: DividerThemeData(color: AppColors.grey.shade400),
-    shadowColor: Colors.white,
-    badgeTheme: const BadgeThemeData(backgroundColor: Colors.red),
-    cardTheme: const CardTheme(
-      color: AppColors.primary,
-      surfaceTintColor: AppColors.onPrimary,
-    ),
     textTheme: _textTheme,
     inputDecorationTheme: _inputDecorationTheme.copyWith(
-      filled: true,
-      fillColor: AppColors.grey.shade900,
+      focusedBorder: _inputDecorationTheme.focusedBorder?.copyWith(
+        borderSide: const BorderSide(color: AppColors.onPrimary),
+      ),
     ),
     elevatedButtonTheme: const ElevatedButtonThemeData(style: _buttonStyle),
     filledButtonTheme: const FilledButtonThemeData(style: _buttonStyle),
@@ -135,5 +163,19 @@ abstract final class AppTheme {
       ),
     ),
     bottomAppBarTheme: _bottomAppBarTheme,
+    navigationBarTheme: _navigationBarThemeData,
+    progressIndicatorTheme: _progressIndicatorThemeData,
+    tabBarTheme: _tabBarThemeData.copyWith(
+      labelColor: AppColors.primary,
+      indicator: BoxDecoration(
+        color: AppColors.onPrimary,
+        borderRadius: _tabBarThemeData.splashBorderRadius,
+      ),
+    ),
+    shadowColor: Colors.white,
+    cardTheme: const CardThemeData(
+      color: Colors.black,
+      surfaceTintColor: Colors.white,
+    ),
   );
 }

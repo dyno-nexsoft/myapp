@@ -4,9 +4,12 @@
     "description": "The conventional newborn programmer greeting"
   },
   "errorWhileLogin": "Error while trying to login",
+  "errorWhileSignUp": "Error while trying to sign up",
+  "errorWhileSaveNewPassword": "Error while trying to save new password",
   "errorWhileLogout": "Error while trying to logout",
   "errorWhileLoadingHome": "Error while loading home",
   "tryAgain": "Try again",
+  "loading": "Loading...",
   "confirm": "Confirm",
   "textSelected": "{text} selected",
   "search": "Search",
@@ -46,5 +49,6 @@
   "saveNewPassword": "Save New Password",
   "youreAllSet": "You're All Set!",
   "passwordChangedSuccessfully": "Congratulations! Your password has been changed successfully.",
-  "goToHomepage": "Go to Homepage"
+  "goToHomepage": "Go to Homepage",
+  "settings": "Settings"
 }

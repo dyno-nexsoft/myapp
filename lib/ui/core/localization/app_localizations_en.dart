@@ -15,6 +15,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get errorWhileLogin => 'Error while trying to login';
 
   @override
+  String get errorWhileSignUp => 'Error while trying to sign up';
+
+  @override
+  String get errorWhileSaveNewPassword => 'Error while trying to save new password';
+
+  @override
   String get errorWhileLogout => 'Error while trying to logout';
 
   @override
@@ -22,6 +28,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get tryAgain => 'Try again';
+
+  @override
+  String get loading => 'Loading...';
 
   @override
   String get confirm => 'Confirm';
@@ -144,4 +153,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get goToHomepage => 'Go to Homepage';
+
+  @override
+  String get settings => 'Settings';
 }

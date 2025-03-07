@@ -105,6 +105,18 @@ abstract class AppLocalizations {
   /// **'Error while trying to login'**
   String get errorWhileLogin;
 
+  /// No description provided for @errorWhileSignUp.
+  ///
+  /// In en, this message translates to:
+  /// **'Error while trying to sign up'**
+  String get errorWhileSignUp;
+
+  /// No description provided for @errorWhileSaveNewPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Error while trying to save new password'**
+  String get errorWhileSaveNewPassword;
+
   /// No description provided for @errorWhileLogout.
   ///
   /// In en, this message translates to:
@@ -122,6 +134,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Try again'**
   String get tryAgain;
+
+  /// No description provided for @loading.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading...'**
+  String get loading;
 
   /// No description provided for @confirm.
   ///
@@ -362,6 +380,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Go to Homepage'**
   String get goToHomepage;
+
+  /// No description provided for @settings.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get settings;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

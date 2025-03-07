@@ -12,7 +12,6 @@ class AdaptiveSlider extends StatelessWidget {
   final double? secondaryTrackValue;
   final ValueChanged<double>? onChanged;
 
-
   @override
   Widget build(BuildContext context) {
     return Slider.adaptive(

@@ -11,7 +11,11 @@ abstract final class Dimens {
     _ => mobile,
   };
 
-  double get paddingDefault => 16.0;
+  double get padding => 16.0;
+
+  double get paddingSmall => 8.0;
+
+  double get paddingLarge => 32.0;
 
   double get paddingScreenHorizontal;
 
@@ -51,41 +55,36 @@ final class _DimensDesktop extends Dimens {
 
 extension DimensExt on Dimens {
   EdgeInsetsGeometry get edgeInsetsHorizontal =>
-      EdgeInsetsDirectional.symmetric(horizontal: paddingDefault);
+      EdgeInsetsDirectional.symmetric(horizontal: padding);
 
   EdgeInsetsGeometry get edgeInsetsVertical =>
-      EdgeInsetsDirectional.symmetric(vertical: paddingDefault);
+      EdgeInsetsDirectional.symmetric(vertical: padding);
 
-  EdgeInsetsGeometry get edgeInsetsAll =>
-      EdgeInsetsDirectional.all(paddingDefault);
+  EdgeInsetsGeometry get edgeInsetsAll => EdgeInsetsDirectional.all(padding);
 
-  Widget get gapHorizontal => SizedBox(width: paddingDefault);
+  EdgeInsetsGeometry get edgeInsetsAllSmall =>
+      EdgeInsetsDirectional.all(paddingSmall);
 
-  Widget get gapHorizontalSmall => SizedBox(width: paddingDefault / 2);
+  EdgeInsetsGeometry get edgeInsetsAllLarge =>
+      EdgeInsetsDirectional.all(paddingLarge);
 
-  Widget get gapHorizontalLarge => SizedBox(width: paddingDefault * 2);
+  Widget get gapHorizontal => SizedBox(width: padding);
 
-  Widget get gapVertical => SizedBox(height: paddingDefault);
+  Widget get gapHorizontalSmall => SizedBox(width: paddingSmall);
 
-  Widget get gapVerticalSmall => SizedBox(height: paddingDefault / 2);
+  Widget get gapHorizontalLarge => SizedBox(width: paddingLarge);
 
-  Widget get gapVerticalLarge => SizedBox(height: paddingDefault * 2);
+  Widget get gapVertical => SizedBox(height: padding);
 
-  BorderRadiusGeometry get borderRadiusStart =>
-      BorderRadiusDirectional.horizontal(
-        start: Radius.circular(paddingDefault),
-      );
+  Widget get gapVerticalSmall => SizedBox(height: paddingSmall);
 
-  BorderRadiusGeometry get borderRadiusEnd =>
-      BorderRadiusDirectional.horizontal(end: Radius.circular(paddingDefault));
+  Widget get gapVerticalLarge => SizedBox(height: paddingLarge);
 
-  BorderRadiusGeometry get borderRadiusTop =>
-      BorderRadiusDirectional.vertical(top: Radius.circular(paddingDefault));
+  BorderRadius get borderRadius => BorderRadius.circular(padding);
 
-  BorderRadiusGeometry get borderRadiusBottom =>
-      BorderRadius.vertical(bottom: Radius.circular(paddingDefault));
+  BorderRadius get borderRadiusSmall => BorderRadius.circular(paddingSmall);
 
-  BorderRadius get borderRadiusAll => BorderRadius.circular(paddingDefault);
+  BorderRadius get borderRadiusLarge => BorderRadius.circular(paddingLarge);
 
   EdgeInsetsGeometry get edgeInsetsScreen => EdgeInsetsDirectional.symmetric(
     horizontal: paddingScreenHorizontal,

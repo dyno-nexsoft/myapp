@@ -9,7 +9,7 @@ class SocialButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      spacing: Dimens.of(context).paddingDefault,
+      spacing: Dimens.of(context).padding,
       children: [
         _buildSocialButton(
           context,

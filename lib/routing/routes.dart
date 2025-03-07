@@ -17,10 +17,14 @@ import '../ui/dashboard/view_models/dashboard_viewmodel.dart';
 import '../ui/dashboard/widgets/dashboard_screen.dart';
 import '../ui/home/view_models/home_viewmodel.dart';
 import '../ui/home/widgets/home_screen.dart';
+import '../ui/notification/view_models/notification_viewmodel.dart';
+import '../ui/notification/widgets/notification_screen.dart';
 import '../ui/setting/view_models/settings_viewmodel.dart';
 import '../ui/setting/widgets/settings_screen.dart';
 
 part 'routes.g.dart';
+
+final rootNavigationKey = GlobalKey<NavigatorState>();
 
 @TypedGoRoute<WelcomeRoute>(
   path: '/',
@@ -31,6 +35,8 @@ part 'routes.g.dart';
 )
 class WelcomeRoute extends GoRouteData {
   const WelcomeRoute();
+
+  static final $parentNavigatorKey = rootNavigationKey;
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
@@ -69,6 +75,8 @@ class SignUpRoute extends GoRouteData {
 )
 class ForgotPasswordRoute extends GoRouteData {
   const ForgotPasswordRoute();
+
+  static final $parentNavigatorKey = rootNavigationKey;
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
@@ -162,6 +170,8 @@ class SetNewPasswordRoute extends GoRouteData {
 class DashboardRoute extends StatefulShellRouteData {
   const DashboardRoute();
 
+  static final $parentNavigatorKey = rootNavigationKey;
+
   @override
   Widget builder(
     BuildContext context,
@@ -203,9 +213,12 @@ class SettingsRoute extends GoRouteData {
 class NotificationRoute extends GoRouteData {
   const NotificationRoute();
 
+  static final $parentNavigatorKey = rootNavigationKey;
+
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return const Placeholder();
+    final viewModel = NotificationViewModel();
+    return NotificationScreen(viewModel: viewModel);
   }
 }
 

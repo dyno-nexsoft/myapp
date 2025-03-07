@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../config/colors.gen.dart';
 import '../../core/themes/dimens.dart';
 
 class AuthTitle extends StatelessWidget {
@@ -26,7 +25,7 @@ class AuthTitle extends StatelessWidget {
           subtitle,
           style: TextTheme.of(
             context,
-          ).bodyLarge?.copyWith(color: AppColors.grey),
+          ).bodyLarge,
           textAlign: switch (crossAxisAlignment) {
             CrossAxisAlignment.start => TextAlign.start,
             CrossAxisAlignment.end => TextAlign.end,

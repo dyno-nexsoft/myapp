@@ -1,11 +1,10 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 
 import '../../../../routing/routes.dart';
 import '../../../core/localization/app_localizations.dart';
 import '../../../core/themes/dimens.dart';
-import '../../../core/widgets/adaptive_dialog.dart';
+import '../../../core/widgets/error_indicator.dart';
 import '../../widgets/auth_title.dart';
 import '../../widgets/social_buttons.dart';
 import '../view_models/sign_up_viewmodel.dart';
@@ -27,7 +26,8 @@ class SignUpScreen extends StatelessWidget {
           children: [
             AuthTitle(
               title: AppLocalizations.of(context).createAccount,
-              subtitle: AppLocalizations.of(context).elevateHrManagementWithDinosaur,
+              subtitle:
+                  AppLocalizations.of(context).elevateHrManagementWithDinosaur,
             ),
             const Spacer(),
 
@@ -92,27 +92,11 @@ class SignUpScreen extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomAppBar(
-        child: ListenableBuilder(
-          listenable: viewModel.signUp,
-          builder: (context, child) {
-            if (viewModel.signUp.running) {
-              SchedulerBinding.instance.addPostFrameCallback((_) async {
-                await AdaptiveDialog(
-                  title: const Center(
-                    child: SizedBox.square(
-                      dimension: 48,
-                      child: CircularProgressIndicator.adaptive(),
-                    ),
-                  ),
-                  content: Text(
-                    '${AppLocalizations.of(context).signUp}...',
-                    textAlign: TextAlign.center,
-                  ),
-                ).show(context);
-              });
-            }
-            return child!;
-          },
+        child: ErrorIndicator.listener(
+          title: AppLocalizations.of(context).errorWhileSignUp,
+          titleLoading: '${AppLocalizations.of(context).signUp}...',
+          command: viewModel.signUp,
+          listener: (context) {},
           child: FilledButton(
             onPressed: () => viewModel.signUp.execute(('email', 'password')),
             child: Text(AppLocalizations.of(context).signUp),

@@ -69,7 +69,7 @@ class HomeMenuItem extends StatelessWidget {
           alignment: Alignment.center,
           decoration: BoxDecoration(
             color: Theme.of(context).colorScheme.primary.withAlpha(20),
-            borderRadius: Dimens.of(context).borderRadiusAll,
+            borderRadius: Dimens.of(context).borderRadius,
           ),
           child: Icon(icon, color: color),
         ),

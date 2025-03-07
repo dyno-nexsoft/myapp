@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 
 import '../../../core/localization/app_localizations.dart';
 import '../../../core/themes/dimens.dart';
+import '../../../core/widgets/error_indicator.dart';
 import '../../widgets/auth_title.dart';
 import '../view_models/forgot_password_viewmodel.dart';
 import 'successful_screen.dart';
@@ -64,29 +64,26 @@ class SetNewPasswordScreen extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: BottomAppBar(
-        child: ListenableBuilder(
-          listenable: viewModel.setNewPassword,
+        child: ErrorIndicator.listener(
+          command: viewModel.setNewPassword,
+          title: AppLocalizations.of(context).errorWhileSaveNewPassword,
+          listener: (context) {
+            viewModel.setNewPassword.clearResult();
+            Navigator.of(context).push(
+              const MaterialPage(
+                fullscreenDialog: true,
+                child: SuccessfulScreen(),
+              ).createRoute(context),
+            );
+          },
           builder: (context, child) {
-            if (viewModel.setNewPassword.completed) {
-              SchedulerBinding.instance.addPostFrameCallback((_) async {
-                viewModel.setNewPassword.clearResult();
-                Navigator.of(context).push(
-                  const MaterialPage(
-                    fullscreenDialog: true,
-                    child: SuccessfulScreen(),
-                  ).createRoute(context),
-                );
-              });
-            }
             return FilledButton.icon(
               onPressed: () => viewModel.setNewPassword.execute('argument'),
               icon:
                   viewModel.setNewPassword.running
                       ? const SizedBox.square(
                         dimension: 24,
-                        child: CircularProgressIndicator.adaptive(
-                          backgroundColor: Colors.white,
-                        ),
+                        child: CircularProgressIndicator.adaptive(),
                       )
                       : null,
               label: Text(AppLocalizations.of(context).saveNewPassword),

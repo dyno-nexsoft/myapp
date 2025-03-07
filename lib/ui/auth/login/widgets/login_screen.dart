@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 
 import '../../../../routing/routes.dart';
 import '../../../core/localization/app_localizations.dart';
 import '../../../core/themes/dimens.dart';
 import '../../../core/widgets/adaptive_checkbox.dart';
-import '../../../core/widgets/adaptive_dialog.dart';
+import '../../../core/widgets/error_indicator.dart';
 import '../../widgets/auth_title.dart';
 import '../../widgets/social_buttons.dart';
 import '../view_models/login_viewmodel.dart';
@@ -68,27 +67,11 @@ class LoginScreen extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomAppBar(
-        child: ListenableBuilder(
-          listenable: viewModel.login,
-          builder: (context, child) {
-            if (viewModel.login.running) {
-              SchedulerBinding.instance.addPostFrameCallback((_) async {
-                await AdaptiveDialog(
-                  title: const Center(
-                    child: SizedBox.square(
-                      dimension: 48,
-                      child: CircularProgressIndicator.adaptive(),
-                    ),
-                  ),
-                  content: Text(
-                    "${AppLocalizations.of(context).login}...",
-                    textAlign: TextAlign.center,
-                  ),
-                ).show(context);
-              });
-            }
-            return child!;
-          },
+        child: ErrorIndicator.listener(
+          title: AppLocalizations.of(context).errorWhileLogin,
+          titleLoading: "${AppLocalizations.of(context).login}...",
+          command: viewModel.login,
+          listener: (_) {},
           child: FilledButton(
             onPressed: () => viewModel.login.execute(('email', 'password')),
             child: Text(AppLocalizations.of(context).login),

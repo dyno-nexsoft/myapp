@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'blur_filter.dart';
-
 typedef ActionBuilder =
     List<Widget> Function(BuildContext context, bool rootNavigator);
 
@@ -28,13 +26,10 @@ class AdaptiveDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BackdropFilter(
-      filter: kBlurFilter,
-      child: AlertDialog.adaptive(
-        title: title,
-        content: content,
-        actions: actions?.call(context, rootNavigator),
-      ),
+    return AlertDialog.adaptive(
+      title: title,
+      content: content,
+      actions: actions?.call(context, rootNavigator),
     );
   }
 }

@@ -13,6 +13,7 @@ GoRouter? _router;
 /// to /login when the user logs out.
 GoRouter router(AuthRepository authRepository) =>
     _router ??= GoRouter(
+      navigatorKey: rootNavigationKey,
       debugLogDiagnostics: true,
       redirect: _redirect,
       refreshListenable: authRepository,

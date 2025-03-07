@@ -2,6 +2,7 @@
 <resources>
     <color name="primary">#000000</color>
     <color name="onPrimary">#FFFFFF</color>
+    <color name="text">#616161</color>
     <color name="error">#FF0000</color>
     <color name="grey" type="material">#808080</color>
     <color name="brown" type="material">#964B00</color>

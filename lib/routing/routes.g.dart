@@ -15,6 +15,8 @@ List<RouteBase> get $appRoutes => [
 RouteBase get $welcomeRoute => GoRouteData.$route(
   path: '/',
 
+  parentNavigatorKey: WelcomeRoute.$parentNavigatorKey,
+
   factory: $WelcomeRouteExtension._fromState,
   routes: [
     GoRouteData.$route(path: 'login', factory: $LoginRouteExtension._fromState),
@@ -78,6 +80,8 @@ extension $SignUpRouteExtension on SignUpRoute {
 RouteBase get $forgotPasswordRoute => GoRouteData.$route(
   path: '/forgot-password',
 
+  parentNavigatorKey: ForgotPasswordRoute.$parentNavigatorKey,
+
   factory: $ForgotPasswordRouteExtension._fromState,
   routes: [
     GoRouteData.$route(path: 'otp', factory: $OtpRouteExtension._fromState),
@@ -138,6 +142,7 @@ extension $SetNewPasswordRouteExtension on SetNewPasswordRoute {
 }
 
 RouteBase get $dashboardRoute => StatefulShellRouteData.$route(
+  parentNavigatorKey: DashboardRoute.$parentNavigatorKey,
   factory: $DashboardRouteExtension._fromState,
   branches: [
     StatefulShellBranchData.$branch(
@@ -149,6 +154,8 @@ RouteBase get $dashboardRoute => StatefulShellRouteData.$route(
           routes: [
             GoRouteData.$route(
               path: 'notification',
+
+              parentNavigatorKey: NotificationRoute.$parentNavigatorKey,
 
               factory: $NotificationRouteExtension._fromState,
             ),

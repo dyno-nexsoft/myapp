@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../../../config/assets.gen.dart';
+import '../../../routing/routes.dart';
 import '../../core/themes/dimens.dart';
 
 class HomeAppBar extends StatelessWidget {
@@ -43,7 +44,10 @@ class HomeAppBar extends StatelessWidget {
                 child: DecoratedBox(
                   decoration: BoxDecoration(
                     color: Theme.of(context).colorScheme.primary,
-                    borderRadius: Dimens.of(context).borderRadiusBottom,
+                    borderRadius: Dimens.of(context).borderRadius.copyWith(
+                      topLeft: Radius.zero,
+                      topRight: Radius.zero,
+                    ),
                   ),
                 ),
               ),
@@ -61,7 +65,7 @@ class HomeAppBar extends StatelessWidget {
                     elevation: 2,
                     margin: Dimens.of(context).edgeInsetsHorizontal,
                     shape: RoundedRectangleBorder(
-                      borderRadius: Dimens.of(context).borderRadiusAll,
+                      borderRadius: Dimens.of(context).borderRadius,
                     ),
                     child: Column(
                       children: [
@@ -71,15 +75,13 @@ class HomeAppBar extends StatelessWidget {
                           trailing: Icon(Icons.more_horiz),
                         ),
                         Container(
-                          margin: Dimens.of(context).edgeInsetsAll.subtract(
-                            const EdgeInsetsDirectional.only(top: 16),
-                          ),
-                          padding: Dimens.of(context).edgeInsetsAll / 2,
+                          margin: Dimens.of(context).edgeInsetsHorizontal,
+                          padding: Dimens.of(context).edgeInsetsAllSmall,
                           decoration: BoxDecoration(
                             color: Theme.of(
                               context,
                             ).colorScheme.primary.withAlpha(25),
-                            borderRadius: Dimens.of(context).borderRadiusAll,
+                            borderRadius: Dimens.of(context).borderRadius,
                           ),
                           child: IntrinsicHeight(
                             child: Row(
@@ -102,7 +104,7 @@ class HomeAppBar extends StatelessWidget {
                                           ).edgeInsetsVertical /
                                           2,
                                       padding:
-                                          Dimens.of(context).edgeInsetsAll / 2,
+                                          Dimens.of(context).edgeInsetsAllSmall,
                                       decoration: BoxDecoration(
                                         color: Colors.white,
                                         borderRadius: BorderRadius.circular(
@@ -136,7 +138,7 @@ class HomeAppBar extends StatelessWidget {
                                           ).edgeInsetsVertical /
                                           2,
                                       padding:
-                                          Dimens.of(context).edgeInsetsAll / 2,
+                                          Dimens.of(context).edgeInsetsAllSmall,
                                       decoration: BoxDecoration(
                                         color: Colors.black,
                                         borderRadius: BorderRadius.circular(
@@ -160,6 +162,7 @@ class HomeAppBar extends StatelessWidget {
                             ),
                           ),
                         ),
+                        Dimens.of(context).gapVertical,
                       ],
                     ),
                   ),
@@ -171,7 +174,7 @@ class HomeAppBar extends StatelessWidget {
                 left: 0,
                 child: ListTile(
                   dense: true,
-                  contentPadding: const EdgeInsetsDirectional.symmetric(horizontal: 16),
+                  contentPadding: Dimens.of(context).edgeInsetsHorizontal,
                   leading: CircleAvatar(
                     backgroundImage: AppAssets.images.user.provider(),
                   ),
@@ -192,14 +195,16 @@ class HomeAppBar extends StatelessWidget {
         },
       ),
       actions: [
-        Badge.count(
-          count: 10,
-          child: Icon(
-            Icons.notifications,
-            color: Theme.of(context).colorScheme.onPrimary,
+        IconButton(
+          onPressed: () => const NotificationRoute().push(context),
+          icon: Badge.count(
+            count: 10,
+            child: Icon(
+              Icons.notifications,
+              color: Theme.of(context).colorScheme.onPrimary,
+            ),
           ),
         ),
-        Dimens.of(context).gapHorizontal,
       ],
     );
   }
