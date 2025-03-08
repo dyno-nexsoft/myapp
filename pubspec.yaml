@@ -8,8 +8,10 @@ environment:
 
 dependencies:
   cached_network_image: ^3.4.1
+  fl_chart: ^0.70.2
   flutter:
     sdk: flutter
+  flutter_adaptive_scaffold: ^0.3.2
   flutter_localizations:
     sdk: flutter
   freezed_annotation: ^3.0.0

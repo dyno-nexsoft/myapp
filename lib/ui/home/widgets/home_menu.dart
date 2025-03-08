@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../routing/routes.dart';
 import '../../core/themes/dimens.dart';
 
 class HomeMenu extends StatelessWidget {
@@ -11,38 +12,41 @@ class HomeMenu extends StatelessWidget {
       crossAxisCount: 4,
       children: [
         HomeMenuItem(
-          icon: Icons.receipt_outlined,
-          color: Colors.teal.shade400,
-          text: 'Payroll',
+          icon: Icons.lock_outlined,
+          color: Colors.red,
+          text: 'Attendance',
+          onPressed: () => const AttendanceRoute().push(context),
         ),
         HomeMenuItem(
-          icon: Icons.payments_outlined,
-          color: Colors.red.shade400,
-          text: 'Payslip',
+          icon: Icons.receipt_outlined,
+          color: Colors.teal,
+          text: 'Payroll',
+          onPressed: () => const PayrollRoute().push(context),
         ),
         HomeMenuItem(
           icon: Icons.forum_outlined,
-          color: Colors.orange.shade400,
-          text: 'Counseling',
+          color: Colors.orange,
+          text: 'Employees',
+          onPressed: () => const EmployeesRoute().push(context),
         ),
-        HomeMenuItem(
+        const HomeMenuItem(
           icon: Icons.pending_actions_outlined,
-          color: Colors.brown.shade400,
+          color: Colors.brown,
           text: 'Time Off',
         ),
-        HomeMenuItem(
+        const HomeMenuItem(
           icon: Icons.calendar_month_outlined,
-          color: Colors.purple.shade400,
+          color: Colors.purple,
           text: 'Calendar',
         ),
-        HomeMenuItem(
+        const HomeMenuItem(
           icon: Icons.alarm_outlined,
-          color: Colors.blue.shade400,
+          color: Colors.blue,
           text: 'Overtime',
         ),
-        HomeMenuItem(
+        const HomeMenuItem(
           icon: Icons.power_settings_new_outlined,
-          color: Colors.red.shade400,
+          color: Colors.red,
           text: 'Resign',
         ),
         const HomeMenuItem(icon: Icons.more_horiz, text: 'Other'),
@@ -52,29 +56,41 @@ class HomeMenu extends StatelessWidget {
 }
 
 class HomeMenuItem extends StatelessWidget {
-  const HomeMenuItem({super.key, this.icon, this.color, this.text});
+  const HomeMenuItem({
+    super.key,
+    this.icon,
+    this.color,
+    this.text,
+    this.onPressed,
+  });
 
   final IconData? icon;
   final Color? color;
   final String? text;
+  final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Container(
-          width: 50,
-          height: 50,
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.primary.withAlpha(20),
-            borderRadius: Dimens.of(context).borderRadius,
+        IconButton.filled(
+          style: IconButton.styleFrom(
+            minimumSize: const Size.square(50),
+            padding: EdgeInsetsDirectional.zero,
+            shape: RoundedRectangleBorder(
+              borderRadius: Dimens.of(context).borderRadius,
+            ),
+            backgroundColor: Theme.of(context).hoverColor,
           ),
-          child: Icon(icon, color: color),
+          onPressed: onPressed,
+          icon: Icon(
+            icon,
+            color: color?.withAlpha(onPressed == null ? 100 : 255),
+          ),
         ),
-        Dimens.of(context).gapVertical,
-        Text(text ?? 'Item', style: TextTheme.of(context).labelSmall),
+        Dimens.of(context).gapVerticalSmall,
+        Text(text ?? '', style: TextTheme.of(context).labelSmall),
       ],
     );
   }

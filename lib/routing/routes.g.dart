@@ -163,6 +163,13 @@ RouteBase get $dashboardRoute => StatefulShellRouteData.$route(
               path: 'attendance',
 
               factory: $AttendanceRouteExtension._fromState,
+              routes: [
+                GoRouteData.$route(
+                  path: 'details',
+
+                  factory: $AttendanceDetailRouteExtension._fromState,
+                ),
+              ],
             ),
             GoRouteData.$route(
               path: 'payroll',
@@ -333,6 +340,22 @@ extension $AttendanceRouteExtension on AttendanceRoute {
       const AttendanceRoute();
 
   String get location => GoRouteData.$location('/home/attendance');
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $AttendanceDetailRouteExtension on AttendanceDetailRoute {
+  static AttendanceDetailRoute _fromState(GoRouterState state) =>
+      const AttendanceDetailRoute();
+
+  String get location => GoRouteData.$location('/home/attendance/details');
 
   void go(BuildContext context) => context.go(location);
 

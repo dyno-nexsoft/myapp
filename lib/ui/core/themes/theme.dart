@@ -3,11 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../config/colors.gen.dart';
 
 abstract final class AppTheme {
-  static const _textTheme = TextTheme(
-    bodyLarge: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
-    bodyMedium: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
-    bodySmall: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
-  );
+  static const _textTheme = TextTheme();
 
   static const _inputDecorationTheme = InputDecorationTheme(
     isDense: true,
@@ -69,11 +65,7 @@ abstract final class AppTheme {
       error: AppColors.error,
       onError: AppColors.primary,
     ),
-    textTheme: _textTheme.copyWith(
-      bodySmall: _textTheme.bodySmall?.copyWith(color: AppColors.text),
-      bodyMedium: _textTheme.bodySmall?.copyWith(color: AppColors.text),
-      bodyLarge: _textTheme.bodySmall?.copyWith(color: AppColors.text),
-    ),
+    textTheme: _textTheme,
     inputDecorationTheme: _inputDecorationTheme.copyWith(
       filled: true,
       fillColor: AppColors.grey.shade50,
@@ -124,8 +116,13 @@ abstract final class AppTheme {
     shadowColor: Colors.black,
     cardTheme: CardThemeData(
       elevation: 0,
-      color: AppColors.grey.shade50,
-      shadowColor: Colors.black,
+      color: Colors.white,
+      surfaceTintColor: Colors.black,
+      shape: RoundedRectangleBorder(
+        borderRadius: const BorderRadius.all(Radius.circular(16)),
+        side: BorderSide(color: AppColors.grey.shade200),
+      ),
+      margin: EdgeInsetsDirectional.zero,
     ),
   );
 

@@ -39,7 +39,7 @@ class GeneralTab extends StatelessWidget {
           border: Border.all(color: Theme.of(context).disabledColor),
         ),
         child: Padding(
-          padding: const EdgeInsets.all(12.0),
+          padding: const EdgeInsetsDirectional.all(12.0),
           child: switch (index % 5) {
             1 => const Icon(Icons.info_rounded),
             2 => const Icon(Icons.lock_rounded),

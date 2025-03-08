@@ -2,6 +2,9 @@ import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
+import '../ui/attendance/view_models/attendance_viewmodel.dart';
+import '../ui/attendance/widgets/attendance_detail_screen.dart';
+import '../ui/attendance/widgets/attendance_screen.dart';
 import '../ui/auth/forgot_password/view_models/forgot_password_viewmodel.dart';
 import '../ui/auth/forgot_password/widgets/forgot_password_screen.dart';
 import '../ui/auth/forgot_password/widgets/set_new_password_screen.dart';
@@ -13,8 +16,7 @@ import '../ui/auth/sign_up/view_models/sign_up_viewmodel.dart';
 import '../ui/auth/sign_up/widgets/sign_up_screen.dart';
 import '../ui/auth/welcome/view_models/welcome_viewmodel.dart';
 import '../ui/auth/welcome/widgets/welcome_screen.dart';
-import '../ui/dashboard/view_models/dashboard_viewmodel.dart';
-import '../ui/dashboard/widgets/dashboard_screen.dart';
+import '../ui/core/widgets/adaptive_scaffold.dart';
 import '../ui/home/view_models/home_viewmodel.dart';
 import '../ui/home/widgets/home_screen.dart';
 import '../ui/notification/view_models/notification_viewmodel.dart';
@@ -113,7 +115,10 @@ class SetNewPasswordRoute extends GoRouteData {
           path: '/home',
           routes: [
             TypedGoRoute<NotificationRoute>(path: 'notification'),
-            TypedGoRoute<AttendanceRoute>(path: 'attendance'),
+            TypedGoRoute<AttendanceRoute>(
+              path: 'attendance',
+              routes: [TypedGoRoute<AttendanceDetailRoute>(path: 'details')],
+            ),
             TypedGoRoute<PayrollRoute>(
               path: 'payroll',
               routes: [
@@ -173,16 +178,8 @@ class DashboardRoute extends StatefulShellRouteData {
   static final $parentNavigatorKey = rootNavigationKey;
 
   @override
-  Widget builder(
-    BuildContext context,
-    GoRouterState state,
-    StatefulNavigationShell navigationShell,
-  ) {
-    final viewModel = DashboardViewModel();
-    return DashboardScreen(
-      viewModel: viewModel,
-      navigationShell: navigationShell,
-    );
+  Widget builder(context, state, navigationShell) {
+    return AdaptiveScaffoldShell(navigationShell: navigationShell);
   }
 }
 
@@ -194,9 +191,11 @@ class HomeRoute extends GoRouteData {
   const HomeRoute();
 
   @override
-  Widget build(BuildContext context, GoRouterState state) {
+  Page buildPage(BuildContext context, GoRouterState state) {
     final viewModel = HomeViewModel();
-    return HomeScreen(viewModel: viewModel);
+    return AdaptiveScaffold(
+      body: HomeScreen(key: state.pageKey, viewModel: viewModel),
+    ).buildPage(context);
   }
 }
 
@@ -204,9 +203,15 @@ class SettingsRoute extends GoRouteData {
   const SettingsRoute();
 
   @override
-  Widget build(BuildContext context, GoRouterState state) {
+  Page buildPage(BuildContext context, GoRouterState state) {
     final viewModel = SettingsViewModel(userRepository: context.read());
-    return SettingsScreen(viewModel: viewModel, appViewModel: context.read());
+    return AdaptiveScaffold(
+      body: SettingsScreen(
+        key: state.pageKey,
+        viewModel: viewModel,
+        appViewModel: context.read(),
+      ),
+    ).buildPage(context);
   }
 }
 
@@ -226,8 +231,24 @@ class AttendanceRoute extends GoRouteData {
   const AttendanceRoute();
 
   @override
-  Widget build(BuildContext context, GoRouterState state) {
-    return const Placeholder();
+  Page buildPage(BuildContext context, GoRouterState state) {
+    final viewModel = AttendanceViewModel();
+    return AdaptiveScaffold(
+      body: AttendanceScreen(key: state.pageKey, viewModel: viewModel),
+    ).buildPage(context);
+  }
+}
+
+class AttendanceDetailRoute extends GoRouteData {
+  const AttendanceDetailRoute();
+
+  @override
+  Page buildPage(BuildContext context, GoRouterState state) {
+    final viewModel = AttendanceViewModel();
+    return AdaptiveScaffold(
+      body: AttendanceScreen(key: state.pageKey, viewModel: viewModel),
+      secondaryBody: AttendanceDetailScreen(viewModel: viewModel),
+    ).buildPage(context);
   }
 }
 
