@@ -52,6 +52,14 @@ abstract final class AppTheme {
     splashBorderRadius: BorderRadius.all(Radius.circular(8)),
   );
 
+  static const _cardThemeData = CardThemeData(
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(16)),
+    ),
+    margin: EdgeInsetsDirectional.zero,
+    clipBehavior: Clip.hardEdge,
+  );
+
   static final lightTheme = ThemeData(
     brightness: Brightness.light,
     colorScheme: ColorScheme(
@@ -112,18 +120,17 @@ abstract final class AppTheme {
         borderRadius: _tabBarThemeData.splashBorderRadius,
       ),
     ),
-    dividerTheme: DividerThemeData(color: AppColors.grey.shade200),
-    shadowColor: Colors.black,
-    cardTheme: CardThemeData(
+    cardTheme: _cardThemeData.copyWith(
       elevation: 0,
       color: Colors.white,
       surfaceTintColor: Colors.black,
-      shape: RoundedRectangleBorder(
-        borderRadius: const BorderRadius.all(Radius.circular(16)),
+      shadowColor: Colors.black,
+      shape: (_cardThemeData.shape as RoundedRectangleBorder).copyWith(
         side: BorderSide(color: AppColors.grey.shade200),
       ),
-      margin: EdgeInsetsDirectional.zero,
     ),
+    dividerTheme: DividerThemeData(color: AppColors.grey.shade200),
+    shadowColor: Colors.black,
   );
 
   static final darkTheme = ThemeData(
@@ -169,10 +176,11 @@ abstract final class AppTheme {
         borderRadius: _tabBarThemeData.splashBorderRadius,
       ),
     ),
-    shadowColor: Colors.white,
-    cardTheme: const CardThemeData(
+    cardTheme: _cardThemeData.copyWith(
       color: Colors.black,
       surfaceTintColor: Colors.white,
+      shadowColor: Colors.white,
     ),
+    shadowColor: Colors.white,
   );
 }

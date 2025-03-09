@@ -19,6 +19,10 @@ class $AssetsImagesGen {
   AssetGenImage get facebook =>
       const AssetGenImage('assets/images/facebook.png');
 
+  /// File path: assets/images/google-pay.png
+  AssetGenImage get googlePay =>
+      const AssetGenImage('assets/images/google-pay.png');
+
   /// File path: assets/images/google.png
   AssetGenImage get google => const AssetGenImage('assets/images/google.png');
 
@@ -29,17 +33,31 @@ class $AssetsImagesGen {
   /// File path: assets/images/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
 
+  /// File path: assets/images/master-card.png
+  AssetGenImage get masterCard =>
+      const AssetGenImage('assets/images/master-card.png');
+
+  /// File path: assets/images/pay-pal.png
+  AssetGenImage get payPal => const AssetGenImage('assets/images/pay-pal.png');
+
   /// File path: assets/images/user.jpg
   AssetGenImage get user => const AssetGenImage('assets/images/user.jpg');
+
+  /// File path: assets/images/visa.png
+  AssetGenImage get visa => const AssetGenImage('assets/images/visa.png');
 
   /// List of all assets
   List<AssetGenImage> get values => [
     apple,
     facebook,
+    googlePay,
     google,
     logoRemoveBg,
     logo,
+    masterCard,
+    payPal,
     user,
+    visa,
   ];
 }
 

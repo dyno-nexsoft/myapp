@@ -183,7 +183,9 @@ class AttendanceScreen extends StatelessWidget {
           horizontal: Dimens.of(context).paddingSmall,
         ),
         isThreeLine: true,
-        onTap: () => const AttendanceDetailRoute().go(context),
+        onTap:
+            () =>
+                AttendanceDetailRoute(id: label, $extra: viewModel).go(context),
         titleTextStyle: TextTheme.of(context).titleMedium,
         title: Text('$label ($length)', maxLines: 1),
         subtitle: Wrap(

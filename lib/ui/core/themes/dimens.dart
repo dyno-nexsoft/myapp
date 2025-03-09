@@ -12,17 +12,18 @@ sealed class Dimens {
     _ => const DimensMobile(),
   };
 
+  /// Auto add leading button at detail screen
+  bool get automaticallyImplyLeading => true;
+
   double get padding => 16.0;
 
   double get paddingSmall => 8.0;
 
   double get paddingLarge => 32.0;
 
-  double get paddingScreenHorizontal;
-
-  double get paddingScreenVertical;
-
   double get profilePictureSize;
+
+  int get homeMenuCount;
 }
 
 /// Mobile dimensions
@@ -30,13 +31,10 @@ final class DimensMobile extends Dimens {
   const DimensMobile();
 
   @override
-  final double paddingScreenHorizontal = 16.0;
+  final double profilePictureSize = 80.0;
 
   @override
-  final double paddingScreenVertical = 8.0;
-
-  @override
-  final double profilePictureSize = 84.0;
+  int get homeMenuCount => 4;
 }
 
 /// Tablet dimensions
@@ -44,13 +42,10 @@ final class DimensTablet extends Dimens {
   const DimensTablet();
 
   @override
-  final double paddingScreenHorizontal = 64.0;
+  final double profilePictureSize = 90.0;
 
   @override
-  final double paddingScreenVertical = 32.0;
-
-  @override
-  final double profilePictureSize = 100.0;
+  int get homeMenuCount => 8;
 }
 
 /// Desktop/Web dimensions
@@ -58,13 +53,13 @@ final class DimensDesktop extends Dimens {
   const DimensDesktop();
 
   @override
-  final double paddingScreenHorizontal = 100.0;
+  bool get automaticallyImplyLeading => false;
 
   @override
-  final double paddingScreenVertical = 64.0;
+  final double profilePictureSize = 100.0;
 
   @override
-  final double profilePictureSize = 128.0;
+  int get homeMenuCount => 8;
 }
 
 extension DimensExt on Dimens {
@@ -99,9 +94,4 @@ extension DimensExt on Dimens {
   BorderRadius get borderRadiusSmall => BorderRadius.circular(paddingSmall);
 
   BorderRadius get borderRadiusLarge => BorderRadius.circular(paddingLarge);
-
-  EdgeInsetsGeometry get edgeInsetsScreen => EdgeInsetsDirectional.symmetric(
-    horizontal: paddingScreenHorizontal,
-    vertical: paddingScreenVertical,
-  );
 }

@@ -13,10 +13,11 @@ class AdaptiveScaffold extends StatelessWidget {
   final Widget body;
   final Widget? secondaryBody;
 
-  Page<T> buildPage<T>(BuildContext context) => switch (Dimens.of(context)) {
-    DimensDesktop() => NoTransitionPage<T>(child: this),
-    Dimens() => MaterialPage<T>(child: this),
-  };
+  Page<T> buildPage<T>(BuildContext context, GoRouterState state) =>
+      switch (Dimens.of(context)) {
+        DimensDesktop() => NoTransitionPage<T>(key: state.pageKey, child: this),
+        Dimens() => MaterialPage<T>(key: state.pageKey, child: this),
+      };
 
   @override
   Widget build(BuildContext context) {
@@ -24,11 +25,11 @@ class AdaptiveScaffold extends StatelessWidget {
       body: SlotLayout(
         config: {
           Breakpoints.standard: SlotLayout.from(
-            key: const Key('adaptive_scaffold.Breakpoints.standard'),
+            key: const Key('Body standard'),
             builder: (_) => secondaryBody ?? body,
           ),
           Breakpoints.mediumLargeAndUp: SlotLayout.from(
-            key: const Key('adaptive_scaffold.Breakpoints.mediumLargeAndUp'),
+            key: const Key('Body MediumLarge'),
             builder: (_) => body,
           ),
         },
@@ -37,7 +38,7 @@ class AdaptiveScaffold extends StatelessWidget {
         config: {
           if (secondaryBody != null)
             Breakpoints.mediumLargeAndUp: SlotLayout.from(
-              key: const Key('adaptive_scaffold.Breakpoints.mediumLargeAndUp'),
+              key: const Key('SecondaryBody MediumLarge'),
               builder: (_) => secondaryBody!,
             ),
         },
@@ -48,7 +49,7 @@ class AdaptiveScaffold extends StatelessWidget {
 
 class AdaptiveScaffoldShell extends StatelessWidget {
   const AdaptiveScaffoldShell({
-    super.key = const ValueKey('adaptive_scaffold.AdaptiveScaffold'),
+    super.key = const Key('AdaptiveScaffoldShell'),
     required this.navigationShell,
   });
 

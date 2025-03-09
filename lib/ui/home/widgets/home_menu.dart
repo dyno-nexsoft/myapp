@@ -9,25 +9,25 @@ class HomeMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverGrid.count(
-      crossAxisCount: 4,
+      crossAxisCount: Dimens.of(context).homeMenuCount,
       children: [
         HomeMenuItem(
           icon: Icons.lock_outlined,
           color: Colors.red,
           text: 'Attendance',
-          onPressed: () => const AttendanceRoute().push(context),
+          onPressed: () => const AttendanceRoute().go(context),
         ),
         HomeMenuItem(
           icon: Icons.receipt_outlined,
           color: Colors.teal,
           text: 'Payroll',
-          onPressed: () => const PayrollRoute().push(context),
+          onPressed: () => const PayrollRoute().go(context),
         ),
         HomeMenuItem(
           icon: Icons.forum_outlined,
           color: Colors.orange,
           text: 'Employees',
-          onPressed: () => const EmployeesRoute().push(context),
+          onPressed: () => const EmployeesRoute().go(context),
         ),
         const HomeMenuItem(
           icon: Icons.pending_actions_outlined,

@@ -28,8 +28,13 @@ class SettingsScreen extends StatelessWidget {
         clipBehavior: Clip.none,
         padding: Dimens.of(context).edgeInsetsAll,
         children: [
-          Text('General', style: TextTheme.of(context).labelLarge),
+          const ListTile(
+            contentPadding: EdgeInsetsDirectional.zero,
+            leading: Text('General'),
+            title: Divider(),
+          ),
           Card(
+            elevation: 0.5,
             child: Column(
               children: [
                 const ListTile(
@@ -92,9 +97,13 @@ class SettingsScreen extends StatelessWidget {
               ],
             ),
           ),
-          Dimens.of(context).gapVertical,
-          Text('Company', style: TextTheme.of(context).labelLarge),
+          const ListTile(
+            contentPadding: EdgeInsetsDirectional.zero,
+            leading: Text('Company'),
+            title: Divider(),
+          ),
           const Card(
+            elevation: 0.5,
             child: Column(
               children: [
                 ListTile(
@@ -110,9 +119,13 @@ class SettingsScreen extends StatelessWidget {
               ],
             ),
           ),
-          Dimens.of(context).gapVertical,
-          Text('About', style: TextTheme.of(context).labelLarge),
+          const ListTile(
+            contentPadding: EdgeInsetsDirectional.zero,
+            leading: Text('About'),
+            title: Divider(),
+          ),
           const Card(
+            elevation: 0.5,
             child: Column(
               children: [
                 ListTile(

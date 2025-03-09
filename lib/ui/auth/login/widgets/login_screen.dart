@@ -55,7 +55,7 @@ class LoginScreen extends StatelessWidget {
                 Text(AppLocalizations.of(context).rememberMe),
                 const Spacer(),
                 TextButton(
-                  onPressed: () => const ForgotPasswordRoute().push(context),
+                  onPressed: () => const ForgotPasswordRoute().go(context),
                   child: Text(AppLocalizations.of(context).forgotPassword),
                 ),
               ],

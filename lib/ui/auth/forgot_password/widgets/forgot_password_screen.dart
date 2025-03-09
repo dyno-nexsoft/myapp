@@ -46,7 +46,7 @@ class ForgotPasswordScreen extends StatelessWidget {
           onPressed:
               () => const OtpRoute().push<String>(context).then((otp) {
                 if (otp != null && context.mounted) {
-                  const SetNewPasswordRoute().push(context);
+                  const SetNewPasswordRoute().go(context);
                 }
               }),
           child: Text(AppLocalizations.of(context).sendOtpCode),

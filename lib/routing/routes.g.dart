@@ -165,7 +165,7 @@ RouteBase get $dashboardRoute => StatefulShellRouteData.$route(
               factory: $AttendanceRouteExtension._fromState,
               routes: [
                 GoRouteData.$route(
-                  path: 'details',
+                  path: 'details/:id',
 
                   factory: $AttendanceDetailRouteExtension._fromState,
                 ),
@@ -177,7 +177,12 @@ RouteBase get $dashboardRoute => StatefulShellRouteData.$route(
               factory: $PayrollRouteExtension._fromState,
               routes: [
                 GoRouteData.$route(
-                  path: 'details',
+                  path: 'details/global',
+
+                  factory: $PayrollDetailsGlobalRouteExtension._fromState,
+                ),
+                GoRouteData.$route(
+                  path: 'details/:id',
 
                   factory: $PayrollDetailsRouteExtension._fromState,
                 ),
@@ -353,18 +358,25 @@ extension $AttendanceRouteExtension on AttendanceRoute {
 
 extension $AttendanceDetailRouteExtension on AttendanceDetailRoute {
   static AttendanceDetailRoute _fromState(GoRouterState state) =>
-      const AttendanceDetailRoute();
+      AttendanceDetailRoute(
+        id: state.pathParameters['id']!,
+        $extra: state.extra as AttendanceViewModel?,
+      );
 
-  String get location => GoRouteData.$location('/home/attendance/details');
+  String get location => GoRouteData.$location(
+    '/home/attendance/details/${Uri.encodeComponent(id)}',
+  );
 
-  void go(BuildContext context) => context.go(location);
+  void go(BuildContext context) => context.go(location, extra: $extra);
 
-  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+  Future<T?> push<T>(BuildContext context) =>
+      context.push<T>(location, extra: $extra);
 
   void pushReplacement(BuildContext context) =>
-      context.pushReplacement(location);
+      context.pushReplacement(location, extra: $extra);
 
-  void replace(BuildContext context) => context.replace(location);
+  void replace(BuildContext context) =>
+      context.replace(location, extra: $extra);
 }
 
 extension $PayrollRouteExtension on PayrollRoute {
@@ -382,20 +394,44 @@ extension $PayrollRouteExtension on PayrollRoute {
   void replace(BuildContext context) => context.replace(location);
 }
 
-extension $PayrollDetailsRouteExtension on PayrollDetailsRoute {
-  static PayrollDetailsRoute _fromState(GoRouterState state) =>
-      const PayrollDetailsRoute();
+extension $PayrollDetailsGlobalRouteExtension on PayrollDetailsGlobalRoute {
+  static PayrollDetailsGlobalRoute _fromState(GoRouterState state) =>
+      PayrollDetailsGlobalRoute($extra: state.extra as PayrollViewModel?);
 
-  String get location => GoRouteData.$location('/home/payroll/details');
+  String get location => GoRouteData.$location('/home/payroll/details/global');
 
-  void go(BuildContext context) => context.go(location);
+  void go(BuildContext context) => context.go(location, extra: $extra);
 
-  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+  Future<T?> push<T>(BuildContext context) =>
+      context.push<T>(location, extra: $extra);
 
   void pushReplacement(BuildContext context) =>
-      context.pushReplacement(location);
+      context.pushReplacement(location, extra: $extra);
 
-  void replace(BuildContext context) => context.replace(location);
+  void replace(BuildContext context) =>
+      context.replace(location, extra: $extra);
+}
+
+extension $PayrollDetailsRouteExtension on PayrollDetailsRoute {
+  static PayrollDetailsRoute _fromState(GoRouterState state) =>
+      PayrollDetailsRoute(
+        id: state.pathParameters['id']!,
+        $extra: state.extra as PayrollViewModel?,
+      );
+
+  String get location =>
+      GoRouteData.$location('/home/payroll/details/${Uri.encodeComponent(id)}');
+
+  void go(BuildContext context) => context.go(location, extra: $extra);
+
+  Future<T?> push<T>(BuildContext context) =>
+      context.push<T>(location, extra: $extra);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location, extra: $extra);
+
+  void replace(BuildContext context) =>
+      context.replace(location, extra: $extra);
 }
 
 extension $PayrollHistoryRouteExtension on PayrollHistoryRoute {

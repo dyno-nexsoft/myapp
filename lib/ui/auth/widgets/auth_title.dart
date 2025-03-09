@@ -23,9 +23,7 @@ class AuthTitle extends StatelessWidget {
         Dimens.of(context).gapVertical,
         Text(
           subtitle,
-          style: TextTheme.of(
-            context,
-          ).bodyLarge,
+          style: TextTheme.of(context).bodyLarge,
           textAlign: switch (crossAxisAlignment) {
             CrossAxisAlignment.start => TextAlign.start,
             CrossAxisAlignment.end => TextAlign.end,

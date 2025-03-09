@@ -44,12 +44,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
 
             const Spacer(),
             FilledButton(
-              onPressed: () => const SignUpRoute().push(context),
+              onPressed: () => const SignUpRoute().go(context),
               child: Center(child: Text(AppLocalizations.of(context).signUp)),
             ),
             Dimens.of(context).gapVertical,
             FilledButton.tonal(
-              onPressed: () => const LoginRoute().push(context),
+              onPressed: () => const LoginRoute().go(context),
               child: Center(child: Text(AppLocalizations.of(context).login)),
             ),
 

@@ -196,7 +196,7 @@ class HomeAppBar extends StatelessWidget {
       ),
       actions: [
         IconButton(
-          onPressed: () => const NotificationRoute().push(context),
+          onPressed: () => const NotificationRoute().go(context),
           icon: Badge.count(
             count: 10,
             child: Icon(
