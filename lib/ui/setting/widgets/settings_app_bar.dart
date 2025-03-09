@@ -31,11 +31,11 @@ class SettingsAppBar extends StatelessWidget {
       },
       expandedHeight: expandedHeight,
       collapsedHeight: collapsedHeight + topPadding,
-      foregroundColor: Theme.of(context).colorScheme.onPrimary,
+      foregroundColor: ColorScheme.of(context).onPrimary,
       title: Text(AppLocalizations.of(context).profile),
       actions: [
         LogoutButton(
-          color: Theme.of(context).colorScheme.onPrimary,
+          color: ColorScheme.of(context).onPrimary,
           viewModel: LogoutViewModel(authRepository: context.read()),
         ),
         Dimens.of(context).gapHorizontal,
@@ -49,7 +49,7 @@ class SettingsAppBar extends StatelessWidget {
             children: [
               DecoratedBox(
                 decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.primary,
+                  color: ColorScheme.of(context).primary,
                   borderRadius: BorderRadius.vertical(
                     bottom: Radius.circular(Dimens.of(context).padding),
                   ),
@@ -75,13 +75,13 @@ class SettingsAppBar extends StatelessWidget {
                           ),
                           Container(
                             decoration: BoxDecoration(
-                              color: Theme.of(context).colorScheme.onPrimary,
+                              color: ColorScheme.of(context).onPrimary,
                               shape: BoxShape.circle,
                             ),
                             padding: Dimens.of(context).edgeInsetsAll / 4,
                             child: Icon(
                               Icons.camera,
-                              color: Theme.of(context).colorScheme.primary,
+                              color: ColorScheme.of(context).primary,
                             ),
                           ),
                         ],
@@ -89,19 +89,19 @@ class SettingsAppBar extends StatelessWidget {
                       Text(
                         'Mike Cooper',
                         style: TextTheme.of(context).titleMedium?.copyWith(
-                          color: Theme.of(context).colorScheme.onPrimary,
+                          color: ColorScheme.of(context).onPrimary,
                         ),
                       ),
                       Text(
                         'Marketing Officer • DE3824+MO4',
                         style: TextTheme.of(context).bodyMedium?.copyWith(
-                          color: Theme.of(context).colorScheme.onPrimary,
+                          color: ColorScheme.of(context).onPrimary,
                         ),
                       ),
                       Text(
                         'At Tricks. since 2021',
                         style: TextTheme.of(context).bodyMedium?.copyWith(
-                          color: Theme.of(context).colorScheme.onPrimary,
+                          color: ColorScheme.of(context).onPrimary,
                         ),
                       ),
                       Dimens.of(context).gapVertical,

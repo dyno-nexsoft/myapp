@@ -64,18 +64,16 @@ class SetNewPasswordScreen extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: BottomAppBar(
-        child: ErrorIndicator.listener(
+        child: ErrorIndicator.dialog(
           command: viewModel.setNewPassword,
           title: AppLocalizations.of(context).errorWhileSaveNewPassword,
-          listener: (context) {
-            viewModel.setNewPassword.clearResult();
-            Navigator.of(context).push(
-              const MaterialPage(
-                fullscreenDialog: true,
-                child: SuccessfulScreen(),
-              ).createRoute(context),
-            );
-          },
+          onCompleted:
+              (context) => Navigator.of(context).push(
+                const MaterialPage(
+                  fullscreenDialog: true,
+                  child: SuccessfulScreen(),
+                ).createRoute(context),
+              ),
           builder: (context, child) {
             return FilledButton.icon(
               onPressed: () => viewModel.setNewPassword.execute('argument'),

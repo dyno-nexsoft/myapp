@@ -27,6 +27,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get errorWhileLoadingHome => 'Error while loading home';
 
   @override
+  String get errorWhileSubmitPayroll => 'Error while submit payroll';
+
+  @override
   String get tryAgain => 'Try again';
 
   @override

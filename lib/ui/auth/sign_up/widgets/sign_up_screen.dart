@@ -60,7 +60,7 @@ class SignUpScreen extends StatelessWidget {
                     TextSpan(
                       text: "Log in",
                       style: TextStyle(
-                        color: Theme.of(context).colorScheme.secondary,
+                        color: ColorScheme.of(context).secondary,
                       ),
                       recognizer:
                           TapGestureRecognizer()
@@ -92,11 +92,10 @@ class SignUpScreen extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomAppBar(
-        child: ErrorIndicator.listener(
+        child: ErrorIndicator.dialog(
           title: AppLocalizations.of(context).errorWhileSignUp,
           titleLoading: '${AppLocalizations.of(context).signUp}...',
           command: viewModel.signUp,
-          listener: (context) {},
           child: FilledButton(
             onPressed: () => viewModel.signUp.execute(('email', 'password')),
             child: Text(AppLocalizations.of(context).signUp),

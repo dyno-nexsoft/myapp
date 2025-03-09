@@ -43,7 +43,7 @@ class HomeAppBar extends StatelessWidget {
                 ),
                 child: DecoratedBox(
                   decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.primary,
+                    color: ColorScheme.of(context).primary,
                     borderRadius: Dimens.of(context).borderRadius.copyWith(
                       topLeft: Radius.zero,
                       topRight: Radius.zero,
@@ -180,14 +180,11 @@ class HomeAppBar extends StatelessWidget {
                   ),
                   title: const Text('Marketing Orientation'),
                   titleTextStyle: TextTheme.of(context).bodyMedium?.copyWith(
-                    color: Theme.of(context).colorScheme.onPrimary,
+                    color: ColorScheme.of(context).onPrimary,
                   ),
                   subtitle: const Text('Mike Cooper'),
-                  subtitleTextStyle: TextTheme.of(
-                    context,
-                  ).titleMedium?.copyWith(
-                    color: Theme.of(context).colorScheme.onPrimary,
-                  ),
+                  subtitleTextStyle: TextTheme.of(context).titleMedium
+                      ?.copyWith(color: ColorScheme.of(context).onPrimary),
                 ),
               ),
             ],
@@ -201,7 +198,7 @@ class HomeAppBar extends StatelessWidget {
             count: 10,
             child: Icon(
               Icons.notifications,
-              color: Theme.of(context).colorScheme.onPrimary,
+              color: ColorScheme.of(context).onPrimary,
             ),
           ),
         ),

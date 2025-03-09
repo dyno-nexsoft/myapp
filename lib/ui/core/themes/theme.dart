@@ -60,6 +60,14 @@ abstract final class AppTheme {
     clipBehavior: Clip.hardEdge,
   );
 
+  static const _snackBarThemeData = SnackBarThemeData(
+    behavior: SnackBarBehavior.floating,
+    width: 300,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(8)),
+    ),
+  );
+
   static final lightTheme = ThemeData(
     brightness: Brightness.light,
     colorScheme: ColorScheme(
@@ -104,6 +112,8 @@ abstract final class AppTheme {
     ),
     bottomAppBarTheme: _bottomAppBarTheme.copyWith(
       elevation: 0.5,
+      color: Colors.white,
+      surfaceTintColor: Colors.black,
       shadowColor: Colors.black,
     ),
     navigationBarTheme: _navigationBarThemeData.copyWith(
@@ -112,6 +122,15 @@ abstract final class AppTheme {
     ),
     progressIndicatorTheme: _progressIndicatorThemeData.copyWith(
       circularTrackColor: Colors.white,
+    ),
+    snackBarTheme: _snackBarThemeData.copyWith(
+      shape: (_snackBarThemeData.shape as RoundedRectangleBorder).copyWith(
+        side: BorderSide(color: AppColors.grey.shade200),
+      ),
+      actionBackgroundColor: AppColors.primary,
+      actionTextColor: AppColors.onPrimary,
+      backgroundColor: Colors.white,
+      contentTextStyle: const TextStyle(color: Colors.black),
     ),
     tabBarTheme: _tabBarThemeData.copyWith(
       labelColor: AppColors.onPrimary,
@@ -169,6 +188,7 @@ abstract final class AppTheme {
     bottomAppBarTheme: _bottomAppBarTheme,
     navigationBarTheme: _navigationBarThemeData,
     progressIndicatorTheme: _progressIndicatorThemeData,
+    snackBarTheme: _snackBarThemeData,
     tabBarTheme: _tabBarThemeData.copyWith(
       labelColor: AppColors.primary,
       indicator: BoxDecoration(

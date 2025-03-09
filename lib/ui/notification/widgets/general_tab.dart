@@ -76,7 +76,7 @@ class GeneralTab extends StatelessWidget {
             Icon(
               Icons.circle,
               size: 12,
-              color: Theme.of(context).colorScheme.primary,
+              color: ColorScheme.of(context).primary,
             ),
             Dimens.of(context).gapHorizontalSmall,
           ],

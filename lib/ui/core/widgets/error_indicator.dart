@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
@@ -7,7 +9,8 @@ import '../themes/dimens.dart';
 import 'adaptive_dialog.dart';
 import 'blur_filter.dart';
 
-typedef ErrorIndicatorWidgetListener = void Function(BuildContext context);
+typedef ErrorIndicatorOnCompleted =
+    FutureOr<void> Function(BuildContext context);
 
 class ErrorIndicator extends StatelessWidget {
   const ErrorIndicator({
@@ -28,7 +31,7 @@ class ErrorIndicator extends StatelessWidget {
     Widget? child,
   }) = ErrorIndicatorBuilder;
 
-  const factory ErrorIndicator.listener({
+  const factory ErrorIndicator.dialog({
     Key? key,
     required String title,
     String? label,
@@ -37,7 +40,7 @@ class ErrorIndicator extends StatelessWidget {
     String? titleLoading,
     TransitionBuilder? builder,
     Widget? child,
-    ErrorIndicatorWidgetListener? listener,
+    ErrorIndicatorOnCompleted? onCompleted,
   }) = ErrorIndicatorListener;
 
   final String title;
@@ -45,7 +48,9 @@ class ErrorIndicator extends StatelessWidget {
   final VoidCallback? onPressed;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) => _buildError(context);
+
+  Widget _buildError(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -57,14 +62,12 @@ class ErrorIndicator extends StatelessWidget {
                 children: [
                   Icon(
                     Icons.error_outline,
-                    color: Theme.of(context).colorScheme.error,
+                    color: ColorScheme.of(context).error,
                   ),
                   const SizedBox(width: 10),
                   Text(
                     title,
-                    style: TextStyle(
-                      color: Theme.of(context).colorScheme.error,
-                    ),
+                    style: TextStyle(color: ColorScheme.of(context).error),
                   ),
                 ],
               ),
@@ -77,10 +80,10 @@ class ErrorIndicator extends StatelessWidget {
             onPressed: onPressed,
             style: ButtonStyle(
               backgroundColor: WidgetStatePropertyAll(
-                Theme.of(context).colorScheme.error,
+                ColorScheme.of(context).error,
               ),
               foregroundColor: WidgetStatePropertyAll(
-                Theme.of(context).colorScheme.onError,
+                ColorScheme.of(context).onError,
               ),
             ),
             child: Text(label ?? AppLocalizations.of(context).tryAgain),
@@ -122,7 +125,7 @@ class ErrorIndicatorBuilder extends ErrorIndicator {
       return Center(child: _buildRunning(context));
     }
     if (command.error) {
-      return Center(child: super.build(context));
+      return Center(child: _buildError(context));
     }
     return builder?.call(context, child) ?? child ?? const SizedBox();
   }
@@ -154,27 +157,28 @@ class ErrorIndicatorListener extends ErrorIndicatorBuilder {
     required super.command,
     super.builder,
     super.child,
-    this.listener,
+    this.onCompleted,
   });
 
-  final ErrorIndicatorWidgetListener? listener;
+  final ErrorIndicatorOnCompleted? onCompleted;
 
   @override
   Widget _builder(BuildContext context, Widget? child) {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      listener?.call(context);
       if (command.running) {
         await showAdaptiveDialog(
           barrierDismissible: false,
           context: context,
           builder: super._buildRunning,
         );
+      } else if (command.completed) {
+        Navigator.of(context, rootNavigator: true).pop();
+        await onCompleted?.call(context);
+        command.clearResult();
       } else if (command.error) {
-        await showAdaptiveDialog(
-          barrierDismissible: false,
-          context: context,
-          builder: super.build,
-        );
+        Navigator.of(context, rootNavigator: true).pop();
+        await showAdaptiveDialog(context: context, builder: super._buildError);
+        command.clearResult();
       }
     });
     return super.builder?.call(context, child) ?? child ?? const SizedBox();

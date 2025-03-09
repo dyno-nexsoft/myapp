@@ -13,15 +13,23 @@ class PayrollScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Payroll')),
+      appBar: AppBar(
+        title: const Text('Payroll'),
+        actions: [
+          IconButton(
+            onPressed: () => const PayrollHistoryRoute().go(context),
+            icon: const Icon(Icons.history),
+          ),
+        ],
+      ),
       body: ListTileTheme(
         data: ListTileTheme.of(context).copyWith(
+          contentPadding: Dimens.of(context).edgeInsetsHorizontal,
           titleTextStyle: TextTheme.of(context).titleMedium,
-          subtitleTextStyle: TextTheme.of(context).bodyMedium,
-          contentPadding: EdgeInsetsDirectional.zero,
+          subtitleTextStyle: TextTheme.of(context).bodySmall,
+          leadingAndTrailingTextStyle: TextTheme.of(context).titleMedium,
         ),
         child: ListView(
-          padding: Dimens.of(context).edgeInsetsHorizontal,
           children: [
             _buildCard(context),
             ..._buildItems(context),
@@ -29,7 +37,10 @@ class PayrollScreen extends StatelessWidget {
             ..._buildItems(context),
             BottomAppBar(
               child: FilledButton(
-                onPressed: () {},
+                onPressed:
+                    () => PayrollDetailsGlobalRoute(
+                      $extra: viewModel,
+                    ).go(context),
                 child: const Text('Submit Payroll'),
               ),
             ),
@@ -40,13 +51,15 @@ class PayrollScreen extends StatelessWidget {
   }
 
   Widget _buildCard(BuildContext context) {
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.primaryContainer,
-        borderRadius: Dimens.of(context).borderRadius,
-      ),
-      child: Padding(
+    return Center(
+      child: Container(
+        width: Dimens.of(context).payrollCardWidth,
+        margin: Dimens.of(context).edgeInsetsHorizontal,
         padding: Dimens.of(context).edgeInsetsAll,
+        decoration: BoxDecoration(
+          color: ColorScheme.of(context).primaryContainer,
+          borderRadius: Dimens.of(context).borderRadius,
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           spacing: Dimens.of(context).padding,
@@ -56,11 +69,11 @@ class PayrollScreen extends StatelessWidget {
                 Text(
                   'Your balance',
                   style: TextTheme.of(context).bodyMedium?.copyWith(
-                    color: Theme.of(context).colorScheme.onPrimaryContainer,
+                    color: ColorScheme.of(context).onPrimaryContainer,
                   ),
                 ),
                 IconButton(
-                  color: Theme.of(context).colorScheme.onPrimary,
+                  color: ColorScheme.of(context).onPrimary,
                   onPressed: () {},
                   icon: const Icon(Icons.visibility_outlined),
                 ),
@@ -73,7 +86,7 @@ class PayrollScreen extends StatelessWidget {
             Text(
               r'$958,476.50',
               style: TextTheme.of(context).headlineMedium?.copyWith(
-                color: Theme.of(context).colorScheme.onPrimaryContainer,
+                color: ColorScheme.of(context).onPrimaryContainer,
               ),
             ),
             Row(
@@ -82,12 +95,15 @@ class PayrollScreen extends StatelessWidget {
                 Expanded(
                   child: FilledButton.icon(
                     style: FilledButton.styleFrom(
-                      minimumSize: Size.zero,
-                      backgroundColor: Theme.of(context).colorScheme.onPrimary,
-                      foregroundColor: Theme.of(context).colorScheme.primary,
-                      iconColor: Theme.of(context).colorScheme.primary,
+                      backgroundColor: ColorScheme.of(context).onPrimary,
+                      foregroundColor: ColorScheme.of(context).primary,
+                      iconColor: ColorScheme.of(context).primary,
                     ),
-                    onPressed: () {},
+                    onPressed:
+                        () => PayrollBalanceRoute(
+                          type: 'Top up',
+                          $extra: viewModel,
+                        ).go(context),
                     icon: const Icon(Icons.download_outlined),
                     label: const Text('Top Up', maxLines: 1),
                   ),
@@ -95,12 +111,15 @@ class PayrollScreen extends StatelessWidget {
                 Expanded(
                   child: FilledButton.icon(
                     style: FilledButton.styleFrom(
-                      minimumSize: Size.zero,
-                      backgroundColor: Theme.of(context).colorScheme.onPrimary,
-                      foregroundColor: Theme.of(context).colorScheme.primary,
-                      iconColor: Theme.of(context).colorScheme.primary,
+                      backgroundColor: ColorScheme.of(context).onPrimary,
+                      foregroundColor: ColorScheme.of(context).primary,
+                      iconColor: ColorScheme.of(context).primary,
                     ),
-                    onPressed: () {},
+                    onPressed:
+                        () => PayrollBalanceRoute(
+                          type: 'Withdraw',
+                          $extra: viewModel,
+                        ).go(context),
                     icon: const Icon(Icons.logout_outlined),
                     label: const Text('Withdraw', maxLines: 1),
                   ),
@@ -108,12 +127,14 @@ class PayrollScreen extends StatelessWidget {
                 Expanded(
                   child: FilledButton.icon(
                     style: FilledButton.styleFrom(
-                      minimumSize: Size.zero,
-                      backgroundColor: Theme.of(context).colorScheme.onPrimary,
-                      foregroundColor: Theme.of(context).colorScheme.primary,
-                      iconColor: Theme.of(context).colorScheme.primary,
+                      backgroundColor: ColorScheme.of(context).onPrimary,
+                      foregroundColor: ColorScheme.of(context).primary,
+                      iconColor: ColorScheme.of(context).primary,
                     ),
-                    onPressed: () {},
+                    onPressed:
+                        () => PayrollBalanceHistoryRoute(
+                          $extra: viewModel,
+                        ).go(context),
                     icon: const Icon(Icons.history_outlined),
                     label: const Text('History', maxLines: 1),
                   ),

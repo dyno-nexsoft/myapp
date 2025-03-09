@@ -14,30 +14,28 @@ class PayrollDetailsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: Dimens.of(context).automaticallyImplyLeading,
-        title: const Text('Payroll Detail'),
+        title: const Text('Payroll Details'),
       ),
       body: ListTileTheme(
         data: ListTileTheme.of(context).copyWith(
-          titleTextStyle: TextTheme.of(context).bodyLarge,
+          dense: true,
+          contentPadding: Dimens.of(context).edgeInsetsHorizontal,
+          titleTextStyle: TextTheme.of(context).titleMedium,
+          subtitleTextStyle: TextTheme.of(context).bodySmall,
           leadingAndTrailingTextStyle: TextTheme.of(
             context,
-          ).bodyLarge?.copyWith(fontWeight: FontWeight.bold),
-          contentPadding: EdgeInsetsDirectional.zero,
-          dense: true,
+          ).titleMedium?.copyWith(fontWeight: FontWeight.bold),
         ),
         child: ListView(
-          padding: Dimens.of(context).edgeInsetsHorizontal,
           children: <Widget>[
             ListTile(
               leading: CircleAvatar(
                 radius: 18,
                 backgroundImage: AppAssets.images.user.provider(),
               ),
-              titleTextStyle: TextTheme.of(context).titleMedium,
               title: const Row(
                 children: [Expanded(child: Text('Jenny Wilson')), Text(r'$60')],
               ),
-              subtitleTextStyle: TextTheme.of(context).bodyMedium,
               subtitle: const Row(
                 children: [
                   Expanded(child: Text('Product - Product Manager')),
@@ -57,7 +55,7 @@ class PayrollDetailsScreen extends StatelessWidget {
               trailing: Text('160.00 hrs'),
             ),
             const ListTile(
-              leading: Text('Overtime'),
+              title: Text('Overtime'),
               trailing: Text.rich(
                 TextSpan(
                   text: 'O hr ',
@@ -156,7 +154,7 @@ class PayrollDetailsScreen extends StatelessWidget {
               title: Text('Taxes (15%)'),
               trailing: Text(r'- $1,440.00'),
             ),
-            const Divider(),
+            const ListTile(title: Divider()),
             const ListTile(
               title: Text('Total Payroll'),
               trailing: Text(r'$8,160.00'),

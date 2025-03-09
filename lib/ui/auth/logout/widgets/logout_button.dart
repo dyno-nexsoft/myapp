@@ -13,7 +13,7 @@ class LogoutButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ErrorIndicator.listener(
+    return ErrorIndicator.dialog(
       command: viewModel.logout,
       title: AppLocalizations.of(context).errorWhileLogout,
       onPressed: viewModel.logout.execute,
@@ -23,9 +23,7 @@ class LogoutButton extends StatelessWidget {
           padding: Dimens.of(context).edgeInsetsAllSmall,
           shape: RoundedRectangleBorder(
             borderRadius: Dimens.of(context).borderRadiusSmall,
-            side: BorderSide(
-              color: color ?? Theme.of(context).colorScheme.onSurface,
-            ),
+            side: BorderSide(color: color ?? ColorScheme.of(context).onSurface),
           ),
         ),
         onPressed: viewModel.logout.execute,

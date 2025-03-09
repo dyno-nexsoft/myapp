@@ -20,7 +20,7 @@ class SuccessfulScreen extends StatelessWidget {
               child: Icon(
                 Icons.check_circle,
                 size: 100,
-                color: Theme.of(context).colorScheme.primary,
+                color: ColorScheme.of(context).primary,
               ),
             ),
             Dimens.of(context).gapVertical,
@@ -37,7 +37,7 @@ class SuccessfulScreen extends StatelessWidget {
       bottomNavigationBar: BottomAppBar(
         child: FilledButton(
           onPressed: () {
-            const HomeRoute().go(context);
+            const HomeRoute().pushReplacement(context);
             Navigator.of(context).pop();
           },
           child: Text(AppLocalizations.of(context).goToHomepage),

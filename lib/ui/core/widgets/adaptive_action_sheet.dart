@@ -89,9 +89,9 @@ class AdaptiveActionSheet extends StatelessWidget {
                         fontWeight: e.isDefaultAction ? FontWeight.bold : null,
                         color:
                             e.isDestructiveAction
-                                ? Theme.of(context).colorScheme.error
+                                ? ColorScheme.of(context).error
                                 : e.isDefaultAction
-                                ? Theme.of(context).colorScheme.primary
+                                ? ColorScheme.of(context).primary
                                 : null,
                       ),
                       child: e.child,

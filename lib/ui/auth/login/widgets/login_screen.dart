@@ -67,11 +67,10 @@ class LoginScreen extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomAppBar(
-        child: ErrorIndicator.listener(
+        child: ErrorIndicator.dialog(
           title: AppLocalizations.of(context).errorWhileLogin,
           titleLoading: "${AppLocalizations.of(context).login}...",
           command: viewModel.login,
-          listener: (_) {},
           child: FilledButton(
             onPressed: () => viewModel.login.execute(('email', 'password')),
             child: Text(AppLocalizations.of(context).login),

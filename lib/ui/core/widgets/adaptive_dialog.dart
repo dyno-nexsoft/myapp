@@ -1,7 +1,22 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 typedef ActionBuilder =
-    List<Widget> Function(BuildContext context, bool rootNavigator);
+    List<AdaptiveDialogAction> Function(
+      BuildContext context,
+      bool rootNavigator,
+    );
+
+class AdaptiveDialogAction extends CupertinoDialogAction {
+  const AdaptiveDialogAction({
+    super.key,
+    super.onPressed,
+    super.isDefaultAction = false,
+    super.isDestructiveAction = false,
+    super.textStyle,
+    required super.child,
+  });
+}
 
 class AdaptiveDialog extends StatelessWidget {
   const AdaptiveDialog({
@@ -29,7 +44,40 @@ class AdaptiveDialog extends StatelessWidget {
     return AlertDialog.adaptive(
       title: title,
       content: content,
-      actions: actions?.call(context, rootNavigator),
+      actions:
+          actions
+              ?.call(context, rootNavigator)
+              .map(
+                (action) => switch (Theme.of(context).platform) {
+                  TargetPlatform.android ||
+                  TargetPlatform.fuchsia ||
+                  TargetPlatform.linux ||
+                  TargetPlatform.windows => TextButton(
+                    style: TextButton.styleFrom(
+                      minimumSize: const Size.fromHeight(48),
+                      textStyle: action.textStyle,
+                      backgroundColor: switch (action) {
+                        AdaptiveDialogAction(isDestructiveAction: true) =>
+                          ColorScheme.of(context).error,
+                        AdaptiveDialogAction(isDefaultAction: true) =>
+                          ColorScheme.of(context).primary,
+                        AdaptiveDialogAction() => null,
+                      },
+                      foregroundColor: switch (action) {
+                        AdaptiveDialogAction(isDestructiveAction: true) =>
+                          ColorScheme.of(context).onError,
+                        AdaptiveDialogAction(isDefaultAction: true) =>
+                          ColorScheme.of(context).onPrimary,
+                        AdaptiveDialogAction() => null,
+                      },
+                    ),
+                    onPressed: action.onPressed,
+                    child: action.child,
+                  ),
+                  TargetPlatform.iOS || TargetPlatform.macOS => action,
+                },
+              )
+              .toList(),
     );
   }
 }

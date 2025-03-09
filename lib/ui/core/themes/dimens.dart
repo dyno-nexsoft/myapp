@@ -12,6 +12,12 @@ sealed class Dimens {
     _ => const DimensMobile(),
   };
 
+  bool get isMobile => this is DimensMobile;
+
+  bool get isTablet => this is DimensTablet;
+
+  bool get isDesktop => this is DimensDesktop;
+
   /// Auto add leading button at detail screen
   bool get automaticallyImplyLeading => true;
 
@@ -24,6 +30,8 @@ sealed class Dimens {
   double get profilePictureSize;
 
   int get homeMenuCount;
+
+  double get payrollCardWidth;
 }
 
 /// Mobile dimensions
@@ -35,6 +43,9 @@ final class DimensMobile extends Dimens {
 
   @override
   int get homeMenuCount => 4;
+
+  @override
+  double get payrollCardWidth => double.infinity;
 }
 
 /// Tablet dimensions
@@ -46,6 +57,9 @@ final class DimensTablet extends Dimens {
 
   @override
   int get homeMenuCount => 8;
+
+  @override
+  double get payrollCardWidth => 600;
 }
 
 /// Desktop/Web dimensions
@@ -60,6 +74,9 @@ final class DimensDesktop extends Dimens {
 
   @override
   int get homeMenuCount => 8;
+
+  @override
+  double get payrollCardWidth => 840;
 }
 
 extension DimensExt on Dimens {

@@ -129,6 +129,12 @@ abstract class AppLocalizations {
   /// **'Error while loading home'**
   String get errorWhileLoadingHome;
 
+  /// No description provided for @errorWhileSubmitPayroll.
+  ///
+  /// In en, this message translates to:
+  /// **'Error while submit payroll'**
+  String get errorWhileSubmitPayroll;
+
   /// No description provided for @tryAgain.
   ///
   /// In en, this message translates to:

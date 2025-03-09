@@ -22,8 +22,12 @@ import '../ui/home/widgets/home_screen.dart';
 import '../ui/notification/view_models/notification_viewmodel.dart';
 import '../ui/notification/widgets/notification_screen.dart';
 import '../ui/payroll/view_models/payroll_viewmodel.dart';
+import '../ui/payroll/widgets/payroll_balance_history_screen.dart';
+import '../ui/payroll/widgets/payroll_balance_screen.dart';
 import '../ui/payroll/widgets/payroll_details_global_screen.dart';
 import '../ui/payroll/widgets/payroll_details_screen.dart';
+import '../ui/payroll/widgets/payroll_history_detail_screen.dart';
+import '../ui/payroll/widgets/payroll_history_screen.dart';
 import '../ui/payroll/widgets/payroll_screen.dart';
 import '../ui/setting/view_models/settings_viewmodel.dart';
 import '../ui/setting/widgets/settings_screen.dart';
@@ -133,10 +137,12 @@ class SetNewPasswordRoute extends GoRouteData {
                 TypedGoRoute<PayrollHistoryRoute>(
                   path: 'history',
                   routes: [
-                    TypedGoRoute<PayrollHistoryDetailRoute>(path: 'details'),
+                    TypedGoRoute<PayrollHistoryDetailRoute>(
+                      path: 'details/:id',
+                    ),
                   ],
                 ),
-                TypedGoRoute<PayrollBalanceRoute>(path: 'balance'),
+                TypedGoRoute<PayrollBalanceRoute>(path: 'balance/:type'),
                 TypedGoRoute<PayrollBalanceHistoryRoute>(
                   path: 'balance-history',
                   routes: [
@@ -305,35 +311,58 @@ class PayrollHistoryRoute extends GoRouteData {
   const PayrollHistoryRoute();
 
   @override
-  Widget build(BuildContext context, GoRouterState state) {
-    return const Placeholder();
+  Page buildPage(BuildContext context, GoRouterState state) {
+    final viewModel = PayrollViewModel();
+    return AdaptiveScaffold(
+      body: PayrollHistoryScreen(viewModel: viewModel),
+    ).buildPage(context, state);
   }
 }
 
 class PayrollHistoryDetailRoute extends GoRouteData {
-  const PayrollHistoryDetailRoute();
+  const PayrollHistoryDetailRoute({required this.id, this.$extra});
+
+  final String id;
+  final PayrollViewModel? $extra;
 
   @override
-  Widget build(BuildContext context, GoRouterState state) {
-    return const Placeholder();
+  Page buildPage(BuildContext context, GoRouterState state) {
+    final viewModel = $extra ?? PayrollViewModel();
+    return AdaptiveScaffold(
+      body: PayrollHistoryScreen(viewModel: viewModel),
+      secondaryBody: PayrollHistoryDetailScreen(viewModel: viewModel, id: id),
+    ).buildPage(context, state);
   }
 }
 
 class PayrollBalanceRoute extends GoRouteData {
-  const PayrollBalanceRoute();
+  const PayrollBalanceRoute({required this.type, this.$extra});
+
+  final String type;
+  final PayrollViewModel? $extra;
 
   @override
-  Widget build(BuildContext context, GoRouterState state) {
-    return const Placeholder();
+  Page buildPage(BuildContext context, GoRouterState state) {
+    final viewModel = $extra ?? PayrollViewModel();
+    return AdaptiveScaffold(
+      body: PayrollScreen(viewModel: viewModel),
+      secondaryBody: PayrollBalanceScreen(viewModel: viewModel, type: type),
+    ).buildPage(context, state);
   }
 }
 
 class PayrollBalanceHistoryRoute extends GoRouteData {
-  const PayrollBalanceHistoryRoute();
+  const PayrollBalanceHistoryRoute({this.$extra});
+
+  final PayrollViewModel? $extra;
 
   @override
-  Widget build(BuildContext context, GoRouterState state) {
-    return const Placeholder();
+  Page buildPage(BuildContext context, GoRouterState state) {
+    final viewModel = $extra ?? PayrollViewModel();
+    return AdaptiveScaffold(
+      body: PayrollScreen(viewModel: viewModel),
+      secondaryBody: PayrollBalanceHistoryScreen(viewModel: viewModel),
+    ).buildPage(context, state);
   }
 }
 

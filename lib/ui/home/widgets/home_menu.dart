@@ -12,13 +12,13 @@ class HomeMenu extends StatelessWidget {
       crossAxisCount: Dimens.of(context).homeMenuCount,
       children: [
         HomeMenuItem(
-          icon: Icons.lock_outlined,
+          icon: Icons.schedule_outlined,
           color: Colors.red,
           text: 'Attendance',
           onPressed: () => const AttendanceRoute().go(context),
         ),
         HomeMenuItem(
-          icon: Icons.receipt_outlined,
+          icon: Icons.paid_outlined,
           color: Colors.teal,
           text: 'Payroll',
           onPressed: () => const PayrollRoute().go(context),

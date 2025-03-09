@@ -57,7 +57,7 @@ class OtpScreen extends StatelessWidget {
                     text: ' 56 ',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: Theme.of(context).colorScheme.primary,
+                      color: ColorScheme.of(context).primary,
                     ),
                   ),
                   TextSpan(text: AppLocalizations.of(context).seconds),
