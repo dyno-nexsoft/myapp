@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../../utils/command.dart';
 import '../../../utils/result.dart';
-import '../localization/app_localizations.dart';
 
 class AppViewModel with ChangeNotifier {
   AppViewModel() {
@@ -10,8 +9,8 @@ class AppViewModel with ChangeNotifier {
     changeLocale = CommandArgument(_setLocale);
   }
 
-  ThemeMode _themeMode = ThemeMode.values.first;
-  Locale _locale = AppLocalizations.supportedLocales.first;
+  ThemeMode _themeMode = ThemeMode.light;
+  Locale _locale = const Locale('en');
 
   late CommandArgument<void, ThemeMode?> changeThemeMode;
   late CommandArgument<void, Locale?> changeLocale;

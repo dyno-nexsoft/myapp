@@ -62,10 +62,6 @@ abstract final class AppTheme {
 
   static const _snackBarThemeData = SnackBarThemeData(
     behavior: SnackBarBehavior.floating,
-    width: 300,
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.all(Radius.circular(8)),
-    ),
   );
 
   static final lightTheme = ThemeData(
@@ -124,9 +120,6 @@ abstract final class AppTheme {
       circularTrackColor: Colors.white,
     ),
     snackBarTheme: _snackBarThemeData.copyWith(
-      shape: (_snackBarThemeData.shape as RoundedRectangleBorder).copyWith(
-        side: BorderSide(color: AppColors.grey.shade200),
-      ),
       actionBackgroundColor: AppColors.primary,
       actionTextColor: AppColors.onPrimary,
       backgroundColor: Colors.white,

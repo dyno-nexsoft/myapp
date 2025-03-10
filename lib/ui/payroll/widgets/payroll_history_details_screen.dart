@@ -4,8 +4,8 @@ import '../../../config/assets.gen.dart';
 import '../../core/themes/dimens.dart';
 import '../view_models/payroll_viewmodel.dart';
 
-class PayrollHistoryDetailScreen extends StatelessWidget {
-  const PayrollHistoryDetailScreen({
+class PayrollHistoryDetailsScreen extends StatelessWidget {
+  const PayrollHistoryDetailsScreen({
     super.key,
     required this.viewModel,
     required this.id,
@@ -25,7 +25,6 @@ class PayrollHistoryDetailScreen extends StatelessWidget {
             onPressed:
                 () => ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
-                    padding: Dimens.of(context).edgeInsetsAllSmall,
                     content: const Text('Salary Slip downloaded...'),
                     action: SnackBarAction(label: 'Open', onPressed: () {}),
                   ),
@@ -38,9 +37,7 @@ class PayrollHistoryDetailScreen extends StatelessWidget {
         data: ListTileTheme.of(context).copyWith(
           contentPadding: Dimens.of(context).edgeInsetsHorizontal,
           titleTextStyle: TextTheme.of(context).bodyMedium,
-          leadingAndTrailingTextStyle: TextTheme.of(
-            context,
-          ).titleMedium?.copyWith(fontWeight: FontWeight.bold),
+          leadingAndTrailingTextStyle: TextTheme.of(context).titleMedium,
         ),
         child: ListView(
           children: [

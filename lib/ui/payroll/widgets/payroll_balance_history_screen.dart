@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../routing/routes.dart';
 import '../../core/themes/dimens.dart';
 import '../view_models/payroll_viewmodel.dart';
 
@@ -12,7 +13,6 @@ class PayrollBalanceHistoryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: Dimens.of(context).automaticallyImplyLeading,
         title: const Text('History'),
         actions: [
           SearchAnchor(
@@ -48,7 +48,11 @@ class PayrollBalanceHistoryScreen extends StatelessWidget {
 
   Widget _itemBuilder(BuildContext context, int index) {
     return ListTile(
-      onTap: () {},
+      onTap:
+          () => PayrollBalanceHistoryDetailsRoute(
+            id: index.isEven ? 'Top Up' : 'Withdraw',
+            $extra: viewModel,
+          ).go(context),
       leading: DecoratedBox(
         decoration: BoxDecoration(
           shape: BoxShape.circle,
@@ -66,7 +70,7 @@ class PayrollBalanceHistoryScreen extends StatelessWidget {
       ),
       title:
           index.isEven
-              ? const Text(r'Top up - $25,000.00')
+              ? const Text(r'Top Up - $25,000.00')
               : const Text(r'Withdraw - $50,000.00'),
       subtitle: const Text('Succeeded at 09:41 AM, December 31 2023'),
       trailing: const Icon(Icons.chevron_right),

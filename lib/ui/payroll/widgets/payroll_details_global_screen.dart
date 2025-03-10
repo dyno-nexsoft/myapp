@@ -84,14 +84,14 @@ class PayrollDetailsGlobalScreen extends StatelessWidget {
                                 PayrollHistoryDetailRoute(
                                   id: 'id',
                                   $extra: viewModel,
-                                ).pushReplacement(context);
+                                ).go(context);
                                 Navigator.of(context).pop();
                               },
                               child: const Text('View Payroll Summary'),
                             ),
                             AdaptiveDialogAction(
                               onPressed: () {
-                                const HomeRoute().pushReplacement(context);
+                                const HomeRoute().go(context);
                                 Navigator.of(context).pop();
                               },
                               child: const Text('Go to Home'),

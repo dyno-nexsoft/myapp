@@ -37,7 +37,7 @@ class SuccessfulScreen extends StatelessWidget {
       bottomNavigationBar: BottomAppBar(
         child: FilledButton(
           onPressed: () {
-            const HomeRoute().pushReplacement(context);
+            const HomeRoute().go(context);
             Navigator.of(context).pop();
           },
           child: Text(AppLocalizations.of(context).goToHomepage),
