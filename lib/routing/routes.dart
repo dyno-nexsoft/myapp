@@ -344,8 +344,7 @@ class PayrollBalanceRoute extends GoRouteData {
   Page buildPage(BuildContext context, GoRouterState state) {
     final viewModel = $extra ?? PayrollViewModel();
     return AdaptiveScaffold(
-      body: PayrollScreen(viewModel: viewModel),
-      secondaryBody: PayrollBalanceScreen(viewModel: viewModel, type: type),
+      body: PayrollBalanceScreen(viewModel: viewModel, type: type),
     ).buildPage(context, state);
   }
 }

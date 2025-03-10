@@ -135,6 +135,12 @@ abstract class AppLocalizations {
   /// **'Error while submit payroll'**
   String get errorWhileSubmitPayroll;
 
+  /// No description provided for @errorWhileSubmitPayrollBalanceType.
+  ///
+  /// In en, this message translates to:
+  /// **'Error while confirm {type}'**
+  String errorWhileSubmitPayrollBalanceType(Object type);
+
   /// No description provided for @tryAgain.
   ///
   /// In en, this message translates to:

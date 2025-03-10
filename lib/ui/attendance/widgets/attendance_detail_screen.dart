@@ -23,8 +23,9 @@ class AttendanceDetailScreen extends StatelessWidget {
       ),
       body: ListTileTheme(
         data: ListTileTheme.of(context).copyWith(
+          contentPadding: Dimens.of(context).edgeInsetsHorizontal,
           titleTextStyle: TextTheme.of(context).titleMedium,
-          subtitleTextStyle: TextTheme.of(context).bodyMedium,
+          subtitleTextStyle: TextTheme.of(context).bodySmall,
         ),
         child: ListView.builder(itemBuilder: _itemBuilder),
       ),

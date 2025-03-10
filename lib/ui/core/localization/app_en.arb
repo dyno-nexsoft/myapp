@@ -9,6 +9,7 @@
   "errorWhileLogout": "Error while trying to logout",
   "errorWhileLoadingHome": "Error while loading home",
   "errorWhileSubmitPayroll": "Error while submit payroll",
+  "errorWhileSubmitPayrollBalanceType": "Error while confirm {type}",
   "tryAgain": "Try again",
   "loading": "Loading...",
   "confirm": "Confirm",

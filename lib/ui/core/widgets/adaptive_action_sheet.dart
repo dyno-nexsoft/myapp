@@ -26,12 +26,14 @@ class AdaptiveActionSheet extends StatelessWidget {
     this.content,
     this.actions,
     this.rootNavigator = true,
+    this.barrierDismissible = true,
   });
 
   final Widget? title;
   final Widget? content;
   final ActionBuilder? actions;
   final bool rootNavigator;
+  final bool barrierDismissible;
 
   Future<T?> show<T>(BuildContext context) => switch (Theme.of(
     context,
@@ -39,12 +41,15 @@ class AdaptiveActionSheet extends StatelessWidget {
     TargetPlatform.iOS || TargetPlatform.macOS => showCupertinoModalPopup<T>(
       context: context,
       useRootNavigator: rootNavigator,
+      barrierDismissible: barrierDismissible,
       builder: (BuildContext context) => this,
     ),
 
     TargetPlatform() => showModalBottomSheet<T>(
       context: context,
       useRootNavigator: rootNavigator,
+      isDismissible: barrierDismissible,
+      enableDrag: barrierDismissible,
       builder: (BuildContext context) => this,
       isScrollControlled: true,
     ),

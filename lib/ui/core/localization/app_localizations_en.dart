@@ -30,6 +30,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get errorWhileSubmitPayroll => 'Error while submit payroll';
 
   @override
+  String errorWhileSubmitPayrollBalanceType(Object type) {
+    return 'Error while confirm $type';
+  }
+
+  @override
   String get tryAgain => 'Try again';
 
   @override

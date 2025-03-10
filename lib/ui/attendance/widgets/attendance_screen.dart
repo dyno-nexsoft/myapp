@@ -157,9 +157,9 @@ class AttendanceScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const Divider(),
-                  AspectRatio(
-                    aspectRatio: 3 / 4,
+                  const Divider(height: 0),
+                  SizedBox.fromSize(
+                    size: const Size.fromHeight(28 * 10 + 56),
                     child: BarChart(barChartData(context)),
                   ),
                 ],
@@ -226,39 +226,35 @@ class AttendanceScreen extends StatelessWidget {
           child: Icon(icon, size: 18),
         ),
         title: Column(
+          spacing: Dimens.of(context).paddingSmall,
           children: [
-            Row(
-              children: [
-                SizedBox(
-                  height: 30,
-                  child: AspectRatio(
-                    aspectRatio: 2 / 1,
-                    child: LineChart(lineChartData),
+            Expanded(
+              child: Row(
+                children: [
+                  Expanded(child: LineChart(lineChartData)),
+                  Dimens.of(context).gapHorizontalSmall,
+                  Text(
+                    '12.8%',
+                    style: TextTheme.of(
+                      context,
+                    ).labelSmall?.copyWith(color: Colors.green),
                   ),
-                ),
-                Dimens.of(context).gapHorizontalSmall,
-                Text(
-                  '12.8%',
-                  style: TextTheme.of(
-                    context,
-                  ).labelSmall?.copyWith(color: Colors.green),
-                ),
-              ],
+                ],
+              ),
             ),
-            Dimens.of(context).gapVerticalSmall,
             Text(
               title,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: TextTheme.of(context).titleSmall,
             ),
-            Dimens.of(context).gapVerticalSmall,
             Text(
               body,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: TextTheme.of(context).bodySmall,
             ),
+            Dimens.of(context).gapVerticalSmall,
           ],
         ),
       ),
@@ -268,18 +264,18 @@ class AttendanceScreen extends StatelessWidget {
   LineChartData get lineChartData => LineChartData(
     gridData: const FlGridData(show: false),
     titlesData: const FlTitlesData(show: false),
+    lineTouchData: const LineTouchData(enabled: false),
     borderData: FlBorderData(show: false),
     lineBarsData: [
       LineChartBarData(
         dotData: const FlDotData(show: false),
         spots: const [
-          FlSpot(0, 3),
-          FlSpot(2.6, 2),
-          FlSpot(4.9, 5),
-          FlSpot(6.8, 3.1),
-          FlSpot(8, 4),
-          FlSpot(9.5, 3),
-          FlSpot(11, 4),
+          FlSpot(0, 4.5),
+          FlSpot(2, 5),
+          FlSpot(4, 5),
+          FlSpot(6, 4.75),
+          FlSpot(8, 5),
+          FlSpot(10, 5.25),
         ],
         isCurved: true,
         color: Colors.green,
@@ -303,19 +299,19 @@ class AttendanceScreen extends StatelessWidget {
     minY: 30,
     maxY: 40,
     rotationQuarterTurns: 1,
-    borderData: FlBorderData(show: false),
     gridData: const FlGridData(show: false),
+    borderData: FlBorderData(show: false),
     titlesData: FlTitlesData(
       bottomTitles: AxisTitles(
-        axisNameSize: 48,
+        axisNameSize: 28,
         sideTitles: SideTitles(
           showTitles: true,
-          reservedSize: 48,
+          reservedSize: 28,
           getTitlesWidget: (value, meta) {
             return SideTitleWidget(
               meta: meta,
               child: CircleAvatar(
-                radius: 18,
+                radius: 14,
                 backgroundImage: AppAssets.images.user.provider(),
               ),
             );
@@ -323,9 +319,10 @@ class AttendanceScreen extends StatelessWidget {
         ),
       ),
       leftTitles: AxisTitles(
-        axisNameSize: 24,
+        axisNameSize: 28,
         sideTitles: SideTitles(
           showTitles: true,
+          reservedSize: 28,
           interval: 2,
           getTitlesWidget: (value, meta) {
             return SideTitleWidget(meta: meta, child: Text('${value ~/ 1}h'));
@@ -339,7 +336,12 @@ class AttendanceScreen extends StatelessWidget {
       10,
       (index) => BarChartGroupData(
         x: index,
-        barRods: [BarChartRodData(toY: Random().nextDouble() * 10 + 30)],
+        barRods: [
+          BarChartRodData(
+            toY: Random().nextDouble() * 10 + 30,
+            color: ColorScheme.of(context).primary,
+          ),
+        ],
       ),
     ),
   );

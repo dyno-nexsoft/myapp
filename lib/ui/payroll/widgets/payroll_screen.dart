@@ -101,10 +101,10 @@ class PayrollScreen extends StatelessWidget {
                     ),
                     onPressed:
                         () => PayrollBalanceRoute(
-                          type: 'Top up',
+                          type: 'Top Up',
                           $extra: viewModel,
                         ).go(context),
-                    icon: const Icon(Icons.download_outlined),
+                    icon: const Icon(Icons.input_outlined),
                     label: const Text('Top Up', maxLines: 1),
                   ),
                 ),
@@ -120,7 +120,7 @@ class PayrollScreen extends StatelessWidget {
                           type: 'Withdraw',
                           $extra: viewModel,
                         ).go(context),
-                    icon: const Icon(Icons.logout_outlined),
+                    icon: const Icon(Icons.output_outlined),
                     label: const Text('Withdraw', maxLines: 1),
                   ),
                 ),
