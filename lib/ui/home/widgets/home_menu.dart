@@ -24,7 +24,7 @@ class HomeMenu extends StatelessWidget {
           onPressed: () => const PayrollRoute().go(context),
         ),
         HomeMenuItem(
-          icon: Icons.forum_outlined,
+          icon: Icons.groups,
           color: Colors.orange,
           text: 'Employees',
           onPressed: () => const EmployeesRoute().go(context),

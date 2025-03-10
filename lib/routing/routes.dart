@@ -17,6 +17,8 @@ import '../ui/auth/sign_up/widgets/sign_up_screen.dart';
 import '../ui/auth/welcome/view_models/welcome_viewmodel.dart';
 import '../ui/auth/welcome/widgets/welcome_screen.dart';
 import '../ui/core/widgets/adaptive_scaffold.dart';
+import '../ui/employees/view_models/employees_viewmodel.dart';
+import '../ui/employees/widgets/employees_screen.dart';
 import '../ui/home/view_models/home_viewmodel.dart';
 import '../ui/home/widgets/home_screen.dart';
 import '../ui/notification/view_models/notification_viewmodel.dart';
@@ -386,8 +388,11 @@ class EmployeesRoute extends GoRouteData {
   const EmployeesRoute();
 
   @override
-  Widget build(BuildContext context, GoRouterState state) {
-    return const Placeholder();
+  Page buildPage(BuildContext context, GoRouterState state) {
+    final viewModel = EmployeesViewModel();
+    return AdaptiveScaffold(
+      body: EmployeesScreen(viewModel: viewModel),
+    ).buildPage(context, state);
   }
 }
 

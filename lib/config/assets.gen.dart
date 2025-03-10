@@ -15,6 +15,10 @@ class $AssetsImagesGen {
   /// File path: assets/images/apple.png
   AssetGenImage get apple => const AssetGenImage('assets/images/apple.png');
 
+  /// File path: assets/images/employees-empty-bg.png
+  AssetGenImage get employeesEmptyBg =>
+      const AssetGenImage('assets/images/employees-empty-bg.png');
+
   /// File path: assets/images/facebook.png
   AssetGenImage get facebook =>
       const AssetGenImage('assets/images/facebook.png');
@@ -49,6 +53,7 @@ class $AssetsImagesGen {
   /// List of all assets
   List<AssetGenImage> get values => [
     apple,
+    employeesEmptyBg,
     facebook,
     googlePay,
     google,
